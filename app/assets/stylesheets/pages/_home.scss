@@ -13,18 +13,17 @@ h2,i {
 }
 
 .logo-cover {
- object-fit: cover;
- border-radius: 10px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 10px;
 };
-
-.logo {
-  width: 120px;
-}
 
 .app-card {
   background-color: $light-gray;
   width: 430px;
   position: relative;
+  box-shadow: 3px 3px 1px rgba(150, 150, 150, .2);
+  border-radius: 10px;
 };
 
 i {

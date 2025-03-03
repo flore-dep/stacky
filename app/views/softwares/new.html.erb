@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <h1>Add your software</h1>
+
+  <% simple_form_for @software do |f| %>
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :price_month %>
+      <%= f.input :tag %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, "Add software", class: "btn btn-primary mb-2" %>
+    </div>
+  <% end %>
+</div>

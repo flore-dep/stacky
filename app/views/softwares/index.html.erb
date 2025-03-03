@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <h1>Our softwares</h1>
+
+  <% @softwares.each do |software| %>
+    <div class="card mb-3">
+      <img src="..." class="card-img-top" alt="placeholder">
+      <div class="card-body">
+        <h5 class="card-title"><%= software.name %></h5>
+        <p class="card-text"><%= software.description %></p>
+        <p class="card-text"><small class="text-body-secondary"><%= software.price_month %></small></p>
+      </div>
+    </div>
+  <% end %>
+</div>

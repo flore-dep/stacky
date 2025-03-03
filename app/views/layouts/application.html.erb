@@ -11,46 +11,9 @@
   </head>
 
   <body>
-
-
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand text-white" href="/"><%= image_tag("logos/logo_stacky.png", alt: "Stacky", width: "50") %>Stacky
-</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search a software..." aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-          <li class="nav-item active">
-            <a class="nav-link text-white" href="#">My licenses</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#">My apps</a>
-          </li>
-          <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" <%= image_tag("avatars/Kermit.JPG", width:"40", class: "rounded-circle") %>/>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">My profile</a>
-              <a class="dropdown-item" href="#">Preferences</a>
-              <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
-            </div>
-          </li>
-          <!--li class="nav-item"-->
-          <!--/li-->
-      </ul>
-    </div>
-  </div>
-</div>
-
-  <%= render "shared/flashes" %>
+    <%= render "layouts/navbar" %>
+    <%= render "shared/flashes" %>
     <%= yield %>
+    <%= render "layouts/footer" %>
   </body>
 </html>

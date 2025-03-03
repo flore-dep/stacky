@@ -22,7 +22,7 @@ class SoftwareController < ApplicationController
   end
 
   def update
-    @software = Article.update(software_params)
+    @software = Software.update(software_params)
     redirect_to software(@software)
   end
 

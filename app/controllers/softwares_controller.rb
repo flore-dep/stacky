@@ -1,4 +1,4 @@
-class SoftwareController < ApplicationController
+class SoftwaresController < ApplicationController
   before_action :set_software, only: [:show, :edit, :update, :destroy]
 
   def index

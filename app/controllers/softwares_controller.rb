@@ -14,8 +14,13 @@ class SoftwaresController < ApplicationController
 
   def create
     @software = Software.new(software_params)
-    @software.save
-    redirect_to software_path(@software)
+    @software.user = current_user
+    if @software.save
+      redirect_to software_path(@software)
+    else
+      raise
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -34,7 +39,7 @@ class SoftwaresController < ApplicationController
   private
 
   def software_params
-    params.require(:software).permit(:name, :price_month, :description, :tag, :user, :logo)
+    params.require(:software).permit(:name, :price_month, :description, :tag, :logo)
   end
 
   def set_software

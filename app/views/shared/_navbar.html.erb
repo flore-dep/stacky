@@ -7,10 +7,10 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search a software..." aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
+    <%= form_with(url: softwares_path, method: :get, local: true, class: "d-flex", role: "search") do |form| %>
+      <%= form.text_field :query, class: "form-control me-2", placeholder: "Search a software...", aria_label: "Search" %>
+      <%= form.submit "Search", class: "btn btn-outline-success" %>
+    <% end %>
 
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">

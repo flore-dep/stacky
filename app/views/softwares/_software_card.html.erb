@@ -13,10 +13,10 @@
                 <p class="card-text"> <%= license.software.description %> </p>
                 <p class="card-text"> <%= license.software.price_month %> </p>
                 <p class="card-text"> <%= license.software.tag %> </p>
-                <p class="card-text"> <%= link_to "Leave a review", new_license_review_path(license, @review) %></p>
               </div>
             </div>
           </div>
+          <p class="card-text"> <%= link_to "Leave a review", new_license_review_path(license, @review) %></p>
         </div>
       <% end %>
 

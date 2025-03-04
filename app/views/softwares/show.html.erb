@@ -35,4 +35,12 @@
     </div>
   </div>
 
+  <div class="d-flex justify-content-between m-4">
+    <% review = Review.find_by(license: @license) %>
+    <div class="">
+      <p> <%= @license.reviews.comment %> </p>
+    </div>
+    <div class="">
+      <p><%= @license.reviews.rating %></p>
+    </div>
 </div>

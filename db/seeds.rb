@@ -1,6 +1,7 @@
 require "open-uri"
 
 puts "Cleaning database..."
+License.destroy_all
 Software.destroy_all
 User.destroy_all
 

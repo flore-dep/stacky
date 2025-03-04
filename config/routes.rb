@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   end
 
   resources :my_licenses, only: :index
-
+  get 'my_profile', to: 'pages#profile'
 end

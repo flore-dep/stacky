@@ -24,7 +24,6 @@
 </div>
 
 <div class="container">
-
   <div class="d-flex justify-content-between m-4">
     <div class="">
       <p> <%= @software.description %> </p>
@@ -34,12 +33,19 @@
       <%= link_to 'Book a license', new_software_license_path(@software), class:"btn btn-primary" %>
     </div>
   </div>
+</div>
 
-  <div class="d-flex justify-content-between m-4">
-    <ul>
-      <% @reviews.each do |review| %>
-        <li><%= review.comment %> <%= review.rating %></li>
-      <% end %>
-    </ul>
-  </div>
+<div class="container w-75">
+  <h4>Reviews</h4>
+  <ul class="list-group list-group">
+    <% @reviews.each do |review| %>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">User(WIP)</div>
+          <%= review.comment %>
+        </div>
+        <span class="badge bg-primary rounded-pill"><%= review.rating %>/5</span>
+      </li>
+    <% end %>
+  </ul>
 </div>

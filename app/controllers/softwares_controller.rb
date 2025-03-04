@@ -4,6 +4,11 @@ class SoftwaresController < ApplicationController
 
   def index
     @softwares = Software.all
+
+    if params[:query].present?
+      @softwares = Software.where("name ILIKE ?", "%#{params[:query]}%")
+    end
+
   end
 
   def show

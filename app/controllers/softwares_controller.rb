@@ -15,20 +15,20 @@ class SoftwaresController < ApplicationController
   def create
     @software = Software.new(software_params)
     @software.save
-    redirect_to software(@software)
+    redirect_to software_path(@software)
   end
 
   def edit
   end
 
   def update
-    @software = Article.update(software_params)
-    redirect_to software(@software)
+    @software = Software.update(software_params)
+    redirect_to software_path(@software)
   end
 
   def destroy
     @software.destroy
-    redirect_to softwares
+    redirect_to softwares_path
   end
 
   private

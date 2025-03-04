@@ -13,4 +13,5 @@ Rails.application.routes.draw do
     resources :licenses, only: %i[new create]
   end
 
+  resources :my_softwares
 end

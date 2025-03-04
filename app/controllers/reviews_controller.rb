@@ -5,17 +5,10 @@ class ReviewsController < ApplicationController
   end
   def create
     @review = Review.new(review_params)
-    @review.license = @software_licenses
-    @review.user = current_user
+    @review.license = @license
 
-    if current_user.license.valid?
-      @review.save
-    else
-      render :new, status: "You have to get a license to comment this software"
-    end
-
-    if @review.valid?
-      redirect_to software_path(@software)
+    if @review.save
+      redirect_to software_path(@license.software)
     else
       render :new, status: :unprocessable_entity
     end

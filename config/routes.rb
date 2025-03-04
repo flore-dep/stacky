@@ -13,9 +13,12 @@ Rails.application.routes.draw do
     resources :licenses, only: %i[new create]
   end
 
-  resources :my_licenses, only: :index do
+  resources :licenses do
     resources :reviews, only: %i[new create]
   end
+
+  resources :my_licenses, only: :index
+
 
   resources :my_softwares
   end

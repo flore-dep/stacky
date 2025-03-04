@@ -1,18 +1,19 @@
 <div class="row g-5">
-  <% @software_licenses.each do |software| %>
+  <% @licenses.each do |license| %>
     <div class="col-4">
-      <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
+      <%= link_to software_path(license.software), class: "text-decoration-none text-dark" do %>
         <div class="app-card mb-3" style="max-width: 540px; height: 230px;">
           <div class="row g-0">
             <div class="col-md-4">
-              <%= cl_image_tag software.logo.key, class: "img-fluid rounded-start p-3" %>
+              <%= cl_image_tag license.software.logo.key, class: "img-fluid rounded-start p-3" %>
             </div>
             <div class="col-md-8">
               <div class="card-body m-3">
-                <h5 class="card-title"> <%= software.name %> </h5>
-                <p class="card-text"> <%= software.description %> </p>
-                <p class="card-text"> <%= software.price_month %> </p>
-                <p class="card-text"> <%= software.tag %> </p>
+                <h5 class="card-title"> <%= license.software.name %> </h5>
+                <p class="card-text"> <%= license.software.description %> </p>
+                <p class="card-text"> <%= license.software.price_month %> </p>
+                <p class="card-text"> <%= license.software.tag %> </p>
+                <p class="card-text"> <%= link_to "Leave a review", new_license_review_path(license, @review) %></p>
               </div>
             </div>
           </div>

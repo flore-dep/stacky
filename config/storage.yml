@@ -36,4 +36,4 @@ local:
 # config/storage.yml
 cloudinary:
   service: Cloudinary
-  folder: <%= Rails.env %>
+  folder: stacky/<%= Rails.env %>

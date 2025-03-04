@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :licenses
-  has_many_reviews :reviews, through: :licenses
+  has_many :reviews, through: :licenses
 end

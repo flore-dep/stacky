@@ -12,7 +12,7 @@ test = User.create!(
   password: "test12345"
 )
 
-cloudinary_url = "https://res.cloudinary.com/dse45apre/image/upload/v1741089049/development/n0xqeuvdzsyko7o9kgzg2hjnjzrs.jpg"
+cloudinary_url = "https://res.cloudinary.com/dse45apre/image/upload/v1741094002/stacky/development/p3nsjpxlej0g98azpbyudm1orib0.jpg"
 file = URI.open(cloudinary_url)
 
 6.times do

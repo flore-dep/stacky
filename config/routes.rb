@@ -14,4 +14,7 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[new create]
   end
 
-end
+  resources :my_licenses, only: :index
+
+  resources :my_softwares
+  end

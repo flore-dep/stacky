@@ -1,5 +1,6 @@
 class SoftwaresController < ApplicationController
   before_action :set_software, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @softwares = Software.all
@@ -9,7 +10,7 @@ class SoftwaresController < ApplicationController
   end
 
   def new
-    @software = Software.new()
+    @software = Software.new
   end
 
   def create
@@ -18,7 +19,7 @@ class SoftwaresController < ApplicationController
     if @software.save
       redirect_to software_path(@software)
     else
-      raise
+      Rails.logger.debug @software.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
@@ -27,8 +28,11 @@ class SoftwaresController < ApplicationController
   end
 
   def update
-    @software = Software.update(software_params)
-    redirect_to software_path(@software)
+    if @software.update(software_params)
+      redirect_to software_path(@software)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy

@@ -16,4 +16,5 @@ Rails.application.routes.draw do
 
   resources :my_licenses, only: :index
 
-end
+  resources :my_softwares
+  end

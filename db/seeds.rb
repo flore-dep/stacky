@@ -1,6 +1,7 @@
 require "open-uri"
 
 puts "Cleaning database..."
+License.destroy_all
 Software.all.each { |software| software.logo.purge_later } # Supprime les fichiers attachés
 Software.destroy_all
 User.destroy_all

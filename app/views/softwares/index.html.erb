@@ -12,24 +12,60 @@
     </div>
   </div>
 
-  <h5> Best app of the month </h5>
+  <div class="mb-5">
+    <h5 class="mb-3"> Best apps of the month </h5>
+    <div class="row g-5">
+      <% @softwares.first(3).each do |software| %>
+        <div class="col-4">
+          <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
+            <div class="app-card mb-3" style="max-width: 540px; height: 230px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <%= cl_image_tag software.logo.key, class: "img-fluid rounded-start p-3" %>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body m-3">
+                    <h5 class="card-title"> <%= software.name %> </h5>
+                    <p class="card-text"> <%= software.description %> </p>
+                    <p class="card-text"> <%= software.price_month %> </p>
+                    <p class="card-text"> <%= software.tag %> </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
 
-<% @softwares.each do |software| %>
-  <div class="app-card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <%= cl_image_tag software.logo.key, class: "img-fluid rounded-start p-3" %>
-      </div>
-      <div class="col-md-8">
-        <div class="card-body m-3">
-          <h5 class="card-title"> <%= software.name %> </h5>
-          <p class="card-text"> <%= software.description %> </p>
-          <p class="card-text"> <%= software.price_month %> </p>
-          <p class="card-text"> <%= software.tag %> </p>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
-<% end %>
 
+  <div class="my-5">
+    <h5 class="mb-3"> Our app catalog </h5>
+    <div class="row g-5">
+      <% @softwares.each do |software| %>
+        <div class="col-4">
+          <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
+            <div class="app-card mb-3" style="max-width: 540px; height: 230px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <%= image_tag "payfitlogo.png", class: "img-fluid rounded-start p-3" %>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body m-3">
+                    <h5 class="card-title"><%= software.name %></h5>
+                    <p class="card-text">
+                      <%= truncate(software.description, length: 80, omission: '...') %>
+                    </p>
+                    <p class="card-text"><%= software.price_month %></p>
+                    <p class="card-text"><%= software.tag %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

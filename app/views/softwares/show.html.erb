@@ -1,0 +1,38 @@
+
+  <div class="header shadow-sm">
+    <div class="d-flex justify-content-start">
+      <div class="medium-logo-rounded ms-5 mt-3">
+        <%= image_tag "payfitlogo.png", class: "img-fluid rounded-start p-3" %>
+      </div>
+      <div class="m-5">
+        <h5 class="p-2"><%= @software.name %></h5>
+          <div>
+            <div class="d-flex p-2 justify-content-start align-items-center">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span class="p-2"> (4,8) </span>
+            </div>
+            <div class="w-50">
+              <p class="tag px-3 py-1"> <%= @software.tag %> </p>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+
+<div class="container">
+
+  <div class="d-flex justify-content-between m-4">
+    <div class="">
+      <p> <%= @software.description %> </p>
+      <p> <%= @software.price_month %> €/month</p>
+    </div>
+    <div class="">
+      <%= link_to 'Book a license', new_software_license_path(@software), class:"btn btn-primary" %>
+    </div>
+  </div>
+
+</div>

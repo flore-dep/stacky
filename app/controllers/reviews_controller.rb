@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   end
   def create
     @review = Review.new(review_params)
-    @review.license = @license
+    @review.license = @software_licenses
     @review.user = current_user
 
     if current_user.license.valid?

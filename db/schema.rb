@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_04_101005) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_04_130013) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_04_101005) do
     t.index ["user_id"], name: "index_licenses_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.text "comment"
+    t.integer "rating"
+    t.bigint "license_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["license_id"], name: "index_reviews_on_license_id"
+  end
+
   create_table "softwares", force: :cascade do |t|
     t.string "name"
     t.float "price_month"
@@ -85,5 +94,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_04_101005) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "licenses", "softwares"
   add_foreign_key "licenses", "users"
+  add_foreign_key "reviews", "licenses"
   add_foreign_key "softwares", "users"
 end

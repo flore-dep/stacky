@@ -2,7 +2,7 @@
   <div class="header shadow-sm">
     <div class="d-flex justify-content-start">
       <div class="medium-logo-rounded ms-5 mt-3">
-        <%= image_tag "payfitlogo.png", class: "img-fluid rounded-start p-3" %>
+        <%= cl_image_tag @software.logo.key, class: "img-fluid rounded-start p-3" %>
       </div>
       <div class="m-5">
         <h5 class="p-2"><%= @software.name %></h5>

@@ -16,10 +16,14 @@
               </div>
             </div>
           </div>
-          <p class="card-text"> <%= link_to "Leave a review", new_license_review_path(license, @review) %></p>
+          <button class="ms-3 btn btn-secondary">
+            <%= link_to "Leave review", new_license_review_path(license, @review), class: "text-decoration-none text-white" %>
+          </button>
         </div>
       <% end %>
 
     </div>
   <% end %>
 </div>
+
+<button></button>

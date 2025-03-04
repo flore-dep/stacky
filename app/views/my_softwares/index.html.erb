@@ -1,11 +1,37 @@
-
 <div class="container mt-5">
-  <h1>MY SOFTWARES</h1>
 
-  <div>
-    <% @my_softwares.each do |soft| %>
-      <% soft.name %>
-      <% soft.description %>
-    <% end %>
+  <div class="my-5">
+    <h5 class="mb-3">MY SOFTWARES</h5>
+
+    <div class="row g-5">
+      <% @my_softwares.each do |software| %>
+        <div class="col-4">
+          <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
+            <div class="app-card mb-3" style="max-width: 540px; height: 230px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <% if software.logo.attached? %>
+                    <%= cl_image_tag software.logo.key, class: "img-fluid rounded-start p-3" %>
+                  <% end %>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body m-3">
+                    <h5 class="card-title"><%= software.name %></h5>
+                    <p class="card-text">
+                      <%= truncate(software.description, length: 80, omission: '...') %>
+                    </p>
+                    <p class="card-text"><strong>Price:</strong> <%= number_to_currency(software.price_month, unit: "€") %></p>
+                    <p class="card-text"><strong>Tag:</strong> <%= software.tag %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
+
+  <%= link_to "Add a new software", new_software_path, class: "btn btn-primary" %>
+
 </div>

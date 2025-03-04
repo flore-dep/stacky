@@ -2,6 +2,6 @@ class MySoftwaresController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @my_softwares = current_user.softwares
+    @my_softwares = Software.where(user_id: current_user.id)
   end
 end

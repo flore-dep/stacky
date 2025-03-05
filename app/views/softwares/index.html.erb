@@ -1,24 +1,18 @@
 <div class="container">
-  <div class="row justify-content-between bg-white p-3">
-    <div class="col-5 m-3">
-      <h3 class="mb-3">Our app catalog</h3>
-    </div>
-    <div class="col-5 m-3">
-      <%= simple_form_for "/" do |f| %>
-        <%= f.input :software, label: false, placeholder: 'Find your crush', input_html: { class: 'form-control p-1 rounded text-start' } %>
-      <% end %>
+  <div class="row justify-content-between bg-white">
+    <div class="col m-3">
+      <h2 class="mb-3 text-center border-bottom border-dark pb-5">Our catalog by categories</h2>
     </div>
   </div>
 
-
-  <% @softwares_by_tag.each do |tag_name, softwares| %>
-    <div class="my-5">
+<% @softwares_by_tag.each do |tag_name, softwares| %>
+  <div class="mt-4">
       <h5 class="mb-3"><%= tag_name %></h5>
-      <div class="row g-5">
+      <div class="row g-5 border-bottom border-dark">
         <% softwares.each do |software| %>
-            <div class="col-md-4">
-              <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
-              <div class="app-card mb-3" style="max-width: 540px; height: 230px;">
+          <div class="col-md-4 p-0">
+            <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
+              <div class="app-card mb-3" style="max-width: 540px; height: 260px;">
                 <div class="row g-0">
                   <div class="col-md-4">
                     <% if software.logo.attached? %>
@@ -30,7 +24,15 @@
                   <div class="col-md-8">
                     <div class="card-body m-3">
                       <h5 class="card-title"><%= software.name %></h5>
-                      <p class="card-text"><%= truncate(software.description, length: 80, omission: '...') %></p>
+                      <p class="card-text"><%= truncate(software.description, length: 60, omission: '...') %></p>
+                      <% if software.reviews.presence %>
+                        <p class="card-text">
+                          <%= software.average_rating %>
+                          <i class="fa-solid fa-star text-warning"></i>
+                        </p>
+                      <% else %>
+                        <p class="card-text"><strong>No ratings</strong></p>
+                      <% end %>
                       <p class="card-text"><strong>Price:</strong> <%= software.price_month.presence || "Free" %></p>
                       <p class="card-text"><strong>Tag:</strong> <%= software.tag.presence || "No tag" %></p>
                     </div>
@@ -42,5 +44,5 @@
         <% end %>
       </div>
     </div>
-  <% end %>
+    <% end %>
 </div>

@@ -1,25 +1,42 @@
-<div class="container mt-5">
+<div class="container mt-3">
 
-  <div class="my-5">
-    <h5 class="mb-3">MY SOFTWARES</h5>
+  <div class="my-3">
+    <div class="border-bottom m-4 pb-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <h5 class="m-0">My softwares</h5>
+        <%= link_to new_software_path, class: "btn btn-dark" do %>
+          <i class="fa-solid fa-plus text-white me-2"></i>Add a new software
+        <% end %>
+      </div>
+    </div>
 
     <div class="row g-5">
       <% @my_softwares.each do |software| %>
-        <div class="col-4">
+        <div class="col-4 p-0">
           <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
-            <div class="app-card mb-3" style="max-width: 540px; height: 230px;">
+            <div class="app-card mb-3" style="max-width: 540px; height: 260px;">
               <div class="row g-0">
                 <div class="col-md-4">
                   <% if software.logo.attached? %>
                     <%= cl_image_tag software.logo.key, class: "img-fluid rounded-start p-3" %>
+                  <% else %>
+                    <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3" %>
                   <% end %>
                 </div>
                 <div class="col-md-8">
                   <div class="card-body m-3">
                     <h5 class="card-title"><%= software.name %></h5>
                     <p class="card-text">
-                      <%= truncate(software.description, length: 80, omission: '...') %>
+                      <%= truncate(software.description, length: 60, omission: '...') %>
                     </p>
+                    <% if software.average_rating.present? %>
+                      <p class="card-text">
+                        <%= software.average_rating %>
+                        <i class="fa-solid fa-star text-warning"></i>
+                      </p>
+                    <% else %>
+                      <p class="card-text">No ratings</p>
+                    <% end %>
                     <p class="card-text"><strong>Price:</strong> <%= number_to_currency(software.price_month, unit: "€") %></p>
                     <p class="card-text"><strong>Tag:</strong> <%= software.tag %></p>
                   </div>
@@ -31,7 +48,4 @@
       <% end %>
     </div>
   </div>
-
-  <%= link_to "Add a new software", new_software_path, class: "btn btn-primary" %>
-
 </div>

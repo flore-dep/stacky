@@ -1,3 +1,10 @@
-<h1>Leave a review</h1>
+<div class="container mt-5">
 
-<%= render 'form', review: @review, license: @license %>
+  <div class="row justify-content-center">
+    <div class="col-8 bg-light border p-5">
+      <h1 class="m-0">Leave a review for <%= @license.software.name %></h1>
+      <%= render 'form', review: @review, license: @license %>
+    </div>
+  </div>
+
+</div>

@@ -2,8 +2,8 @@
   <h2 class="text-center mt-4"> My Stack</h2>
 
   <div>
-    <div class="border border-dark p-2 text-center">
-      <h5> Active Stack </h5>
+    <div class="border border-dark p-2 text-center rounded">
+      <h5 class="m-0"> Active Stack </h5>
     </div>
 
     <div class='p-2 m-2'>
@@ -11,15 +11,16 @@
         <%= render 'softwares/software_card', license: license, software: license.software %>
       <% end %>
     </div>
+  </div>
 
-  <div class="border border-dark p-2 text-center">
-    <h5> Past Stack </h5>
+  <div class="border border-dark p-2 text-center rounded">
+    <h5 class="m-0"> Past Stack </h5>
   </div>
 
  <div class='p-2 m-2'>
-   <% @licenses_past.each do |license| %>
-        <%= render 'softwares/software_card', license: license, software: license.software %>
-      <% end %>
-    </div>
+  <% @licenses_past.each do |license| %>
+      <%= render 'softwares/software_card', license: license, software: license.software %>
+    <% end %>
+  </div>
 
 </div>

@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row justify-content-between bg-white">
     <div class="col m-3">
-      <h2 class="mb-3 text-center border-bottom border-dark pb-5">Our catalog by categories</h2>
+      <h2 class="mb-3 text-center border-bottom pb-5">Our catalog by categories</h2>
     </div>
   </div>
 
 <% @softwares_by_tag.each do |tag_name, softwares| %>
   <div class="mt-4">
       <h5 class="mb-3"><%= tag_name %></h5>
-      <div class="row g-5 border-bottom border-dark">
+      <div class="row g-5 border-bottom">
         <% softwares.each do |software| %>
           <div class="col-md-4 p-0">
             <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>

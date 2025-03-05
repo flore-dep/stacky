@@ -1,22 +1,23 @@
 <div class="container">
   <div class="row mt-5">
-    <div class="col-4 shadow rounded p-2">
-      <div class="m-2 p-2">
-        <i class="fa-regular fa-id-badge fs-3 mb-4"></i>
-        <span> <b><%= @user.first_name.capitalize %> </b> <%= @user.last_name.capitalize %></span>
-      </div>
-      <div class="m-2 p-2">
-        <i class="fa-solid fa-building fs-3"></i>
-        <span> <%= @user.job_title %> at <%= @user.company %> </span>
-      </div>
+    <div class="col-4 shadow rounded p-4">
+        <p><b>First name: </b><%= @user.first_name.capitalize %></p>
+        <p><b>Last name: </b> <%= @user.last_name.upcase %></p>
+        <p><b>Username: </b><%= @user.username %></p>
+        <p><i class="fa-solid fa-at fs-5 me-2"></i>: <%= @user.email %></p>
+        <p><i class="fa-solid fa-briefcase fs-5 me-2"></i>: <%= @user.job_title.present? ? @user.job_title : "N/A" %></p>
+        <p><i class="fa-solid fa-building fs-3 me-2"></i>: <%= @user.company.present? ? @user.company : "N/A" %></p>
     </div>
 
     <div class=" col-6 p-2 ms-5">
-      <h5> Informations sur <%= @user.username.capitalize %> </h5>
-      <button class="my-2"> TODO - Modifier le profile </button>
+      <div class="d-flex justify-content-between">
+        <h5> Informations sur <%= @user.username.capitalize %> </h5>
+        <%= link_to "Edit infos", edit_user_registration_path, class: "btn btn-success" %>
+      </div>
+
       <div class="my-3">
-        <p> stack licenses: <%= @user.licenses.count %> </p>
-        <p> app owner: <%= @user.softwares.count %> </p>
+        <p><b>Owned licenses: </b><%= @user.licenses.count %> </p>
+        <p><b> Published softwares: </b><%= @user.softwares.count %> </p>
       </div>
     </div>
 

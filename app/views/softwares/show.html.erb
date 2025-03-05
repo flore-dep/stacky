@@ -9,15 +9,11 @@
         <% end %>
       </div>
       <div class="m-5">
-        <h5 class="p-2"><%= @software.name %></h5>
+        <h5 class="p-2 m-0"><%= @software.name %></h5>
           <div>
-            <div class="d-flex p-2 justify-content-start align-items-center">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <span class="p-2"> (4,8) </span>
+            <div class="d-flex p-2 justify-content-start align-items-center mb-3 pt-0">
+              <span class="me-1"><%= @software.average_rating %></span>
+              <i class="fa-solid fa-star text-warning"></i>
             </div>
             <div class="tag">
               <p class="px-3 py-1"> <%= @software.tag %> </p>

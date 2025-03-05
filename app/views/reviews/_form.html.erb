@@ -1,0 +1,11 @@
+<div class="container mt-5">
+  <%= simple_form_for [license, review] do |f| %>
+    <div class="form-inputs">
+      <%= f.input :rating, collection: 0..5 %>
+      <%= f.input :comment %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, "Leave review", class: "btn btn-primary mb-2" %>
+    </div>
+  <% end %>
+</div>

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :softwares do
     resources :licenses, only: %i[new create]
+  end
+
+  resources :licenses do
     resources :reviews, only: %i[new create]
   end
 

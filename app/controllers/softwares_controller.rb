@@ -8,7 +8,6 @@ class SoftwaresController < ApplicationController
     if params[:query].present?
       @softwares = Software.where("name ILIKE ?", "%#{params[:query]}%")
     end
-
   end
 
   def show

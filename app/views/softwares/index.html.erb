@@ -18,7 +18,7 @@
       <% @softwares.first(3).each do |software| %>
         <div class="col-md-4">
           <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
-            <div class="app-card mb-3" style="max-width: 540px; height: 230px;">
+            <div class="app-card mb-3" style="max-width: 540px; height: 260px;">
               <div class="row g-0">
                 <div class="col-md-4">
                   <% if software.logo.attached? %>
@@ -31,6 +31,14 @@
                   <div class="card-body m-3">
                     <h5 class="card-title"><%= software.name %></h5>
                     <p class="card-text"><%= truncate(software.description, length: 80, omission: '...') %></p>
+                    <p class="card-text">
+                      <% rating = [] %>
+                      <% software.reviews.each do |review| %>
+                        <% rating << review.rating %>
+                      <% end %>
+                      <%= rating.sum.fdiv(rating.count) %>
+                      <i class="fa-solid fa-star text-warning"></i>
+                    </p>
                     <p class="card-text"><strong>Price:</strong> <%= software.price_month.presence || "Free" %></p>
                     <p class="card-text"><strong>Tag:</strong> <%= software.tag.presence || "No tag" %></p>
                   </div>
@@ -49,7 +57,7 @@
       <% @softwares.each do |software| %>
         <div class="col-md-4">
           <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
-            <div class="app-card mb-3" style="max-width: 540px; height: 230px;">
+            <div class="app-card mb-3" style="max-width: 540px; height: 260px;">
               <div class="row g-0">
                 <div class="col-md-4">
                   <% if software.logo.attached? %>
@@ -62,6 +70,18 @@
                   <div class="card-body m-3">
                     <h5 class="card-title"><%= software.name %></h5>
                     <p class="card-text"><%= truncate(software.description, length: 80, omission: '...') %></p>
+                    <% if software.reviews.presence %>
+                      <p class="card-text">
+                        <% rating = [] %>
+                        <% software.reviews.each do |review| %>
+                          <% rating << review.rating %>
+                        <% end %>
+                        <%= rating.sum.fdiv(rating.count) %>
+                        <i class="fa-solid fa-star text-warning"></i>
+                      </p>
+                    <% else %>
+                      <p class="card-text"><strong>No ratings</strong></p>
+                    <% end %>
                     <p class="card-text"><strong>Price:</strong> <%= software.price_month.presence || "Free" %></p>
                     <p class="card-text"><strong>Tag:</strong> <%= software.tag.presence || "No tag" %></p>
                   </div>

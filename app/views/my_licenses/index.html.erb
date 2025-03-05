@@ -6,7 +6,9 @@
   </div>
 
     <div class='p-2 m-2'>
-      <%= render 'softwares/software_card', collection: @software_licenses, as: :software %>
+      <% @softwares_active.each do |software| %>
+        <%= render 'softwares/software_card', software: software %>
+      <% end %>
     </div>
 
 
@@ -14,10 +16,10 @@
     <h5> Past Stack </h5>
   </div>
 
-  <div class='p-2 m-2'>
-    <%= render 'softwares/software_card', collection: @software_licenses, as: :software %>
-  </div>
+ <div class='p-2 m-2'>
+      <% @softwares_past.each do |software| %>
+        <%= render 'softwares/software_card', software: software %>
+      <% end %>
+    </div>
 
-
-  <p> TODO </p>
 </div>

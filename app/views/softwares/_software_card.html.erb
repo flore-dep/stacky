@@ -1,5 +1,4 @@
 <div class="row g-5">
-  <% @software_licenses.each do |software| %>
     <div class="col-4">
       <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
         <div class="app-card mb-3" style="max-width: 540px; height: 230px;">
@@ -17,8 +16,6 @@
             </div>
           </div>
         </div>
-      <% end %>
-
     </div>
   <% end %>
 </div>

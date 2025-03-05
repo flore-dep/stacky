@@ -1,5 +1,4 @@
 <div class="row g-5">
-  <% @licenses.each do |license| %>
     <div class="col-4">
       <%= link_to software_path(license.software), class: "text-decoration-none text-dark" do %>
         <div class="app-card mb-3" style="max-width: 540px; height: 230px;">
@@ -20,10 +19,6 @@
             <%= link_to "Leave review", new_license_review_path(license, @review), class: "text-decoration-none text-white" %>
           </button>
         </div>
-      <% end %>
-
     </div>
   <% end %>
 </div>
-
-<button></button>

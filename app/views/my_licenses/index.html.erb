@@ -1,27 +1,33 @@
 <div class="container">
   <h2 class="text-center mt-4"> My Stack</h2>
 
-  <div>
+  <div data-controller="past-licenses">
     <div class="d-flex d-wrap">
       <div class="green-button">
-        <h5 class="px-3 py-1 m-0"> Active Stack </h5>
+        <h5 class="px-3 py-1 m-0" data-action="click->past-licenses#viewactive"> Active Stack </h5>
       </div>
 
       <div class="gray-button text-center ms-5">
-          <h5 class="m-0"><b> Past Stack </b></h5>
+          <h5 class="m-0" data-action="click->past-licenses#viewpast"><b> Past Stack </b></h5>
       </div>
     </div>
 
-  <div class="row g-5 mt-3">
-      <% @licenses_active.each do |license| %>
-        <%= render 'softwares/software_card', license: license, software: license.software %>
-      <% end %>
-      <div class="d-none">
-        <% @licenses_past.each do |license| %>
-          <%= render 'softwares/software_card', license: license, software: license.software %>
-        <% end %>
+      <div data-past-licenses-target="activelicenses">
+        <div class="row g-5 mt-3">
+          <% @licenses_active.each do |license| %>
+            <%= render 'softwares/software_card', license: license, software: license.software %>
+          <% end %>
+        </div>
       </div>
-    </div>
+
+      <div class="d-none" data-past-licenses-target="pastlicenses">
+        <div class="row g-5 mt-3">
+          <% @licenses_past.each do |license| %>
+            <%= render 'softwares/software_card', license: license, software: license.software %>
+          <% end %>
+         </div>
+        </div>
+      </div>
   </div>
 
 

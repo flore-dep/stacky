@@ -1,24 +1,22 @@
-<div class="row g-5">
-    <div class="col-4">
-      <%= link_to software_path(license.software), class: "text-decoration-none text-dark" do %>
-        <div class="app-card mb-3" style="max-width: 540px; height: 230px;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <%= cl_image_tag license.software.logo.key, class: "img-fluid rounded-start p-3" %>
-            </div>
-            <div class="col-md-8">
-              <div class="card-body m-3">
-                <h5 class="card-title"> <%= license.software.name %> </h5>
-                <p class="card-text"> <%= license.software.description %> </p>
-                <p class="card-text"> <%= license.software.price_month %> </p>
-                <p class="card-text"> <%= license.software.tag %> </p>
-              </div>
-            </div>
-          </div>
-          <button class="ms-3 btn btn-secondary">
-            <%= link_to "Leave review", new_license_review_path(license, @review), class: "text-decoration-none text-white" %>
-          </button>
+<div class="col-4 p-0">
+  <%= link_to software_path(license.software), class: "text-decoration-none text-dark" do %>
+    <div class="app-card mb-3" style="max-width: 540px; height: 230px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <%= cl_image_tag license.software.logo.key, class: "img-fluid rounded-start p-3" %>
         </div>
+        <div class="col-md-8">
+          <div class="card-body m-3">
+            <h5 class="card-title"> <%= license.software.name %> </h5>
+            <p class="card-text"> <%= license.software.description %> </p>
+            <p class="card-text"> <%= license.software.price_month %> </p>
+            <p class="card-text"> <%= license.software.tag %> </p>
+          </div>
+        </div>
+      </div>
+      <button class="ms-3 btn btn-secondary">
+        <%= link_to "Leave review", new_license_review_path(license, @review), class: "text-decoration-none text-white" %>
+      </button>
     </div>
-  <% end %>
 </div>
+<% end %>

@@ -1,8 +1,8 @@
 <div class="container mt-5">
   <%= simple_form_for [software, license] do |f| %>
     <div class="form-inputs">
-      <%= f.input :start_at %>
-      <%= f.input :end_at %>
+      <%= f.input :start_at, as: :string, input_html: { data: { controller: "datepicker" } } %>
+      <%= f.input :end_at, as: :string, input_html: { data: { controller: "datepicker" } } %>
     </div>
     <div class="form-actions">
       <%= f.button :submit, "Add license", class: "btn btn-primary mb-2" %>

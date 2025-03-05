@@ -1,34 +1,46 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand text-white" href="/"><%= image_tag("logos/logo_stacky.png", alt: "Stacky", width: "50") %> Stacky
-    </a>
+    <%= link_to root_path, class: "navbar-brand text-white ms-3" do %>
+      <%= image_tag("logos/logo_stacky.png", alt: "Stacky", width: "50") %> Stacky
+    <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search a software..." aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
+    <%= form_with(url: softwares_path, method: :get, local: true, class: "d-flex", role: "search") do |form| %>
+      <%= form.text_field :query, class: "form-control me-2", placeholder: "Search a software...", aria_label: "Search" %>
+      <%= form.submit "Search", class: "btn btn-outline-success" %>
+    <% end %>
 
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+        <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
           <li class="nav-item active">
-            <a class="nav-link text-white" href="#">My licenses</a>
+            <%= link_to "My licenses", my_licenses_path, class: "nav-link text-white" %>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#">My apps</a>
+          <li class="nav-item me-3">
+            <%= link_to "My softwares", my_softwares_path, class: "nav-link text-white" %>
           </li>
-          <li class="nav-item dropdown">
-            <%= image_tag("avatars/Kermit.JPG", width:"40", class: "dropdown-toggle rounded-circle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" }) %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">My profile</a>
-              <a class="dropdown-item" href="#">Preferences</a>
-              <a class="dropdown-item" data-turbo-method="delete" href="/">Log out</a>
-            </div>
+        <% else %>
+          <li class="nav-item me-3">
+            <%= link_to "Sign in", new_user_session_path, class: "nav-link text-white" %>
           </li>
-      </ul>
+        <% end %>
+          <li class="nav-item dropdown me-3">
+            <% if user_signed_in? %>
+              <%= image_tag("avatars/Kermit.JPG", width:"40", class: "dropdown-toggle rounded-circle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" }) %>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">My profile</a>
+                <%= link_to "My profile", my_profile_path, class: "dropdown-item" %>
+                <a class="dropdown-item" href="#">Preferences</a>
+                <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item" %>
+              </div>
+            <% else %>
+              <%= image_tag("avatars/default-pp.jpg", width:"40", class: "dropdown-toggle rounded-circle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" }) %>
+            <% end %>
+          </li>
+        </ul>
     </div>
   </div>
 </div>

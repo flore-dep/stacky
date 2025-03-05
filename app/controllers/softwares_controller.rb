@@ -8,7 +8,7 @@ class SoftwaresController < ApplicationController
     if params[:query].present?
       @softwares = Software.where("name ILIKE ?", "%#{params[:query]}%")
     end
-    @software_by_tag = Software.all.group_by(&:tag)
+    @softwares_by_tag = @softwares.group_by(&:tag)
   end
 
   def show

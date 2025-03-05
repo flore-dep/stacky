@@ -5,7 +5,7 @@
     </div>
     <div class="col-5 m-3">
       <%= simple_form_for "/" do |f| %>
-        <%= f.input :software, placeholder: 'Find your crush', input_html: { class: 'form-control p-1 rounded text-center' } %>
+        <%= f.input :software, label: false, placeholder: 'Find your crush', input_html: { class: 'form-control p-1 rounded text-start' } %>
       <% end %>
     </div>
   </div>
@@ -15,32 +15,32 @@
     <div class="my-5">
       <h5 class="mb-3"><%= tag_name %></h5>
       <div class="row g-5">
-        <% @softwares.each do |software| %>
+        <% softwares.each do |software| %>
             <div class="col-md-4">
               <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
-                <div class="app-card mb-3" style="max-width: 540px; height: 230px;">
-                  <div class="row g-0">
-                    <div class="col-md-4">
-                      <% if software.logo.attached? %>
-                        <%= cl_image_tag software.logo.key, class: "img-fluid rounded-start p-3" %>
-                      <% else %>
-                        <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3" %>
-                      <% end %>
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body m-3">
-                        <h5 class="card-title"><%= software.name %></h5>
-                        <p class="card-text"><%= truncate(software.description, length: 80, omission: '...') %></p>
-                        <p class="card-text"><strong>Price:</strong> <%= software.price_month.presence || "Free" %></p>
-                        <p class="card-text"><strong>Tag:</strong> <%= software.tag.presence || "No tag" %></p>
-                      </div>
+              <div class="app-card mb-3" style="max-width: 540px; height: 230px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <% if software.logo.attached? %>
+                      <%= cl_image_tag software.logo.key, class: "img-fluid rounded-start p-3" %>
+                    <% else %>
+                      <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3" %>
+                    <% end %>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body m-3">
+                      <h5 class="card-title"><%= software.name %></h5>
+                      <p class="card-text"><%= truncate(software.description, length: 80, omission: '...') %></p>
+                      <p class="card-text"><strong>Price:</strong> <%= software.price_month.presence || "Free" %></p>
+                      <p class="card-text"><strong>Tag:</strong> <%= software.tag.presence || "No tag" %></p>
                     </div>
                   </div>
                 </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>

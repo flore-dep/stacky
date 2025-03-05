@@ -7,5 +7,4 @@ class MyLicensesController < ApplicationController
     # @software_licenses = Software.where(id: @softwares)
     # hehe
   end
-  
 end

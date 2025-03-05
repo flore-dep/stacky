@@ -6,7 +6,18 @@
   block-size: fit-content;
 };
 
-.gray-button {
+.gray-button-disable {
   border-bottom: 1px solid $light-gray;
-  color: $dark;
+  color: $light-gray;
+}
+
+.gray-button-active {
+  border-bottom: 1px solid $light-gray;
+  color: $dark
+}
+
+.gray-button-disable {
+  &:hover {
+    color: $dark;
+  }
 }

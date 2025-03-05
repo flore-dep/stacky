@@ -2,7 +2,11 @@
   <div class="header shadow-sm">
     <div class="d-flex justify-content-start">
       <div class="medium-logo-rounded ms-5 mt-3">
-        <%= cl_image_tag @software.logo.key, class: "img-fluid rounded-start p-3" %>
+        <% if @software.logo.attached? %>
+          <%= cl_image_tag @software.logo.key, class: "img-fluid rounded-start p-3" %>
+        <% else %>
+          <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3" %>
+        <% end %>
       </div>
       <div class="m-5">
         <h5 class="p-2"><%= @software.name %></h5>
@@ -24,7 +28,6 @@
 </div>
 
 <div class="container">
-
   <div class="d-flex justify-content-between m-4">
     <div class="">
       <p> <%= @software.description %> </p>
@@ -34,5 +37,26 @@
       <%= link_to 'Book a license', new_software_license_path(@software), class:"btn btn-primary" %>
     </div>
   </div>
+</div>
 
+<div class="container w-75">
+  <h4>Reviews</h4>
+  <% if @reviews.any? %>
+  <ul class="list-group list-group">
+    <% @reviews.each do |review| %>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="">
+          <%= image_tag("avatars/Kermit.JPG", width:"40", class: "rounded-circle") %>
+        </div>
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">User(WIP)</div>
+          <div class="text-break text-muted"><%= review.comment %></div>
+        </div>
+        <span class="badge bg-primary rounded-pill"><%= review.rating %>/5</span>
+      </li>
+    <% end %>
+  </ul>
+  <% else  %>
+  <p class="text-muted">This product has not been reviewed yet</p>
+  <% end  %>
 </div>

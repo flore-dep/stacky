@@ -23,6 +23,8 @@
                 <div class="col-md-4">
                   <% if software.logo.attached? %>
                     <%= cl_image_tag software.logo.key, class: "img-fluid rounded-start p-3" %>
+                  <% else %>
+                    <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3" %>
                   <% end %>
                 </div>
                 <div class="col-md-8">
@@ -52,6 +54,8 @@
                 <div class="col-md-4">
                   <% if software.logo.attached? %>
                     <%= cl_image_tag software.logo.key, class: "img-fluid rounded-start p-3" %>
+                  <% else %>
+                    <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3" %>
                   <% end %>
                 </div>
                 <div class="col-md-8">

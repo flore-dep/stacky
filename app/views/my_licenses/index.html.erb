@@ -6,8 +6,8 @@
   </div>
 
     <div class='p-2 m-2'>
-      <% @softwares_active.each do |software| %>
-        <%= render 'softwares/software_card', software: software %>
+      <% @licenses_active.each do |license| %>
+        <%= render 'softwares/software_card', license: license, software: license.software %>
       <% end %>
     </div>
 
@@ -17,8 +17,8 @@
   </div>
 
  <div class='p-2 m-2'>
-      <% @softwares_past.each do |software| %>
-        <%= render 'softwares/software_card', software: software %>
+   <% @licenses_past.each do |license| %>
+        <%= render 'softwares/software_card', license: license, software: license.software %>
       <% end %>
     </div>
 

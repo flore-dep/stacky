@@ -1,7 +1,8 @@
 class Review < ApplicationRecord
   belongs_to :license
+  has_one :software, through: :license
 
-  after_save :update_software_average_rating
+  after_commit :update_software_average_rating
   after_destroy :update_software_average_rating
 
   validates :comment, :rating, presence: true

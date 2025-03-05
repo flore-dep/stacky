@@ -6,14 +6,20 @@
       <h5> Active Stack </h5>
     </div>
 
-    <div class='p-2 me-2'>
-      <%= render 'softwares/software_card', collection: @software_licenses, as: :software %>
+    <div class='p-2 m-2'>
+      <% @licenses_active.each do |license| %>
+        <%= render 'softwares/software_card', license: license, software: license.software %>
+      <% end %>
     </div>
-  </div>
 
   <div class="border border-dark p-2 text-center">
     <h5> Past Stack </h5>
   </div>
 
-  <p> TODO </p>
+ <div class='p-2 m-2'>
+   <% @licenses_past.each do |license| %>
+        <%= render 'softwares/software_card', license: license, software: license.software %>
+      <% end %>
+    </div>
+
 </div>

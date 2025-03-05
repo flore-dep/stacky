@@ -1,0 +1,12 @@
+.green-button {
+  background-color: rgba(28, 221, 135, 0.5);
+  color: $dark;
+  border-radius: 15px;
+  width: fit-content;
+  block-size: fit-content;
+};
+
+.gray-button {
+  border-bottom: 1px solid $light-gray;
+  color: $dark;
+}

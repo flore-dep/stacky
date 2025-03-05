@@ -4,8 +4,10 @@
       <div class="row g-0">
         <div class="col-md-4">
           <div class="d-flex flex-column">
-            <% if license.software.logo.attached? %>
+            <% if license.software.logo.attached? && past == false %>
               <%= cl_image_tag license.software.logo.key, class: "img-fluid rounded-start p-3 mb-auto" %>
+            <% elsif past == true %>
+              <%= cl_image_tag license.software.logo.key, transformation: { effect: "grayscale" }, class: "img-fluid rounded-start p-3 mb-auto" %>
             <% else %>
               <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3 mb-auto" %>
             <% end %>

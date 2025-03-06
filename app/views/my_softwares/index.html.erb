@@ -10,16 +10,16 @@
     </div>
 
 
-<div data-controller="dashboard">
-  <div class="d-flex d-wrap align-content-center">
-    <div class="green-button-visible" data-dashboard-target="dashboardButton">
-      <h5 class="px-3 py-1 m-0" data-action="click->dashboard#viewDashboard"> Dashboard </h5>
-    </div>
+    <div data-controller="dashboard">
+      <div class="d-flex d-wrap align-content-center">
+        <div class="green-button-visible" data-dashboard-target="dashboardButton">
+          <h5 class="px-3 py-1 m-0" data-action="click->dashboard#viewDashboard"> Dashboard </h5>
+        </div>
 
-    <div class="gray-button-disable text-center ms-5" data-dashboard-target="myAppsButton">
-        <h5 class="px-3 py-1 m-0" data-action="click->dashboard#viewApps"> Apps posted </h5>
-    </div>
-  </div>
+        <div class="gray-button-disable text-center ms-5" data-dashboard-target="myAppsButton">
+            <h5 class="px-3 py-1 m-0" data-action="click->dashboard#viewApps"> Apps posted </h5>
+        </div>
+      </div>
 
 
   <div data-dashboard-target="dashboard">
@@ -29,14 +29,13 @@
       </div>
     </div>
 
-  <div class="d-none" data-dashboard-target="myApps">
+      <div class="d-none" data-dashboard-target="myApps">
         <div class="row g-5 mt-3">
           <% @my_softwares.each do |software| %>
             <%= render 'my_software_card', software: software %>
           <% end %>
-          </div>
         </div>
       </div>
+    </div>
   </div>
-</div>
 </div>

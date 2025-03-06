@@ -1,38 +1,37 @@
-<div class="col-md-4 p-0">
-  <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
-    <div class="app-card mb-3" style="max-width: 540px; height: 260px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <% if software.logo.attached? %>
-            <%= cl_image_tag software.logo.key, class: "img-fluid rounded-start p-3" %>
-          <% else %>
-            <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3" %>
-          <% end %>
-          <div class="tag-small px-3">
-            <% if software.tag.present? %>
-              <% software.tag.each do |tag| %>
-                <% unless tag.empty? %>
-                  <div class="tag mb-2">
-                    <p class="px-3 py-1 m-0"> <%= truncate(tag, length: 17, omission: '...') %> </p>
-                  </div>
+
+      <div class="col-4 p-0">
+        <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
+          <div class="app-card mb-3" style="max-width: 540px; height: 260px;">
+            <div class="row g-0">
+              <div class="col-4 pt-3 ps-3">
+                <% if software.logo.attached? %>
+                  <%= cl_image_tag software.logo.key, class: "img-fluid rounded-start mb-3" %>
+                <% else %>
+                  <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start mb-3" %>
                 <% end %>
-              <% end %>
-            <% else %>
-              <p class="px-3 py-1 m-0 fs-6">No tags</p>
-            <% end %>
-            <button class="ms-3 btn btn-secondary">
-              <%= link_to "Leave review", new_license_review_path(license, @review), class: "text-decoration-none text-white" %>
-            </button>
+                <% if software.tag.present? %>
+                  <% software.tag.each do |tag| %>
+                    <% unless tag.empty? %>
+                      <div class="tag mb-2">
+                        <p class="px-3 py-1 m-0 tag-small"> <%= truncate(tag, length: 17, omission: '...') %> </p>
+                      </div>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <p class="px-3 py-1 m-0 fs-6">No tags</p>
+                <% end %>
+              </div>
+              <div class="col-8 p-3 card-body">
+                    <h5 class="card-title mb-2"><%= software.name %></h5>
+                    <p class="card-text"><%= license.start_at.strftime("%d %B %Y") %> - <%= license.end_at.strftime("%d %B %Y") %></p>
+                    <p class="card-text"><strong>Cost per month:</strong> <%= number_to_currency(software.price_month, unit: "€") %></p>
+
+              </div>
+            </div>
+            <div class="d-flex justify-content-end link-button pe-3">
+              <%= link_to "Leave a review", new_license_review_path(license), class:"text-decoration-none text-dark"%>
+            </div>
           </div>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body m-3">
-            <h5 class="card-title"><%= software.name %></h5>
-            <p class="card-text"><%= truncate(software.description, length: 80, omission: '...') %></p>
-            <p class="card-text"><strong>Price:</strong> <%= software.price_month.presence || "Free" %></p>
-          </div>
-        </div>
+        <% end %>
+
       </div>
-    </div>
-  <% end %>
-</div>

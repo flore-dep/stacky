@@ -53,7 +53,7 @@
                       <p class="card-text"><%= truncate(software.description, length: 60, omission: '...') %></p>
                       <div>
                         <% if software.category.present? %>
-                          <div class="tag bg-info me-2 mb-2">
+                          <div class="tag bg-info me-2 mb-2 cat-tag">
                             <p class="px-3 py-1 m-0"> <%= software.category %> </p>
                           </div>
                         <% else %>
@@ -118,7 +118,7 @@
                     <p class="card-text"><%= truncate(software.description, length: 60, omission: '...') %></p>
                     <div>
                       <% if software.category.present? %>
-                        <div class="tag bg-info me-2 mb-2">
+                        <div class="tag bg-info me-2 mb-2 cat-tag">
                           <p class="px-3 py-1 m-0"> <%= software.category %> </p>
                         </div>
                       <% else %>

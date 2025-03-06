@@ -10,17 +10,21 @@ export default class extends Controller {
 
   viewDashboard() {
     this.myAppsButtonTarget.classList.remove("green-button-visible");
-    this.myAppsButtonTarget.classList.add("green-button-disable");
+    this.myAppsButtonTarget.classList.add("grey-button-disable");
+    this.dashboardButtonTarget.classList.add("green-button-visible")
     this.myAppsTarget.classList.add("d-none");
     this.dashboardTarget.classList.remove("d-none");
-    this.dashboardButtonTarget.classList.add("gray-button-active");
+    this.myAppsButtonTarget.classList.add("gray-button-disable");
+    console.log(this.viewDashboard)
   }
 
   viewApps() {
-    this.dashboardButtonTarget.classList.remove("gray-button-active");
+    this.dashboardButtonTarget.classList.remove("green-button-visible")
+    this.dashboardButtonTarget.classList.add("gray-button-disable");
     this.dashboardTarget.classList.add("d-none");
-    this.myAppsButtonTarget.classList.remove("green-button-disable");
+    this.myAppsButtonTarget.classList.remove("gray-button-disable");
     this.myAppsButtonTarget.classList.add("green-button-visible");
     this.myAppsTarget.classList.remove("d-none");
+    console.log(this.viewApps)
   }
 }

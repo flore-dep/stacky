@@ -31,15 +31,19 @@
       </div>
     <div class="d-flex flex-column align-items-end mt-4 me-4 ms-auto">
       <div class="" >
-            <% if @existing_license == false %>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Add to your stack
-            <% elsif @existing_license %>
-              <button type="button" class="btn btn-secondary disabled" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Already in your stack
-            <% end %>
-
+        <% if @existing_license.present? == false %>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add to your stack
           </button>
+        <% elsif @end_date_validity == false %>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Renew your license
+          </button>
+        <% else %>
+          <button type="button" class="btn btn-secondary disabled" data-bs-toggle="modal" data-bs-target="#exampleModal">
+           Already in your stack
+          </button>
+        <% end %>
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

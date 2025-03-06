@@ -1,11 +1,17 @@
-<div data-controller="past-licenses">
-  <div class="d-flex d-wrap align-content-center">
-    <div class="green-button-visible" data-past-licenses-target="activebutton">
-      <h5 class="px-3 py-1 m-0" data-action="click->past-licenses#viewactive"> Active Stack </h5>
-    </div>
+<div class="container">
+
+   <div class= "text-center row m-3">
+    <h1> My Stack </h1>
+   </div>
+
+  <div data-controller="past-licenses">
+    <div class="d-flex d-wrap align-content-center">
+      <div class="green-button-visible" data-past-licenses-target="activebutton">
+        <h5 class="px-3 py-1 m-0" data-action="click->past-licenses#viewactive"> Active Stack </h5>
+      </div>
 
     <div class="gray-button-disable text-center ms-5" data-past-licenses-target="pastbutton">
-        <h5 class="px-3 py-1 m-0" data-action="click->past-licenses#viewpast">Past Stack</h5>
+        <h5 class="px-3 py-1 m-0" data-action="click->past-licenses#viewpast"> Past Stack</h5>
     </div>
   </div>
 

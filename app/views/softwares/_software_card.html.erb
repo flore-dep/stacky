@@ -1,15 +1,24 @@
-<div class="col-4">
-  <%= link_to software_path(license.software), class: "text-decoration-none text-dark" do %>
+<div class="col-md-4 p-0">
+  <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
     <div class="app-card mb-3" style="max-width: 540px; height: 260px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <div class="d-flex flex-column">
-            <% if license.software.logo.attached? && past == false %>
-              <%= cl_image_tag license.software.logo.key, class: "img-fluid rounded-start p-3 mb-auto" %>
-            <% elsif past == true %>
-              <%= cl_image_tag license.software.logo.key, transformation: { effect: "grayscale" }, class: "img-fluid rounded-start p-3 mb-auto" %>
+          <% if software.logo.attached? %>
+            <%= cl_image_tag software.logo.key, class: "img-fluid rounded-start p-3" %>
+          <% else %>
+            <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3" %>
+          <% end %>
+          <div class="tag-small px-3">
+            <% if software.tag.present? %>
+              <% software.tag.each do |tag| %>
+                <% unless tag.empty? %>
+                  <div class="tag mb-2">
+                    <p class="px-3 py-1 m-0"> <%= truncate(tag, length: 17, omission: '...') %> </p>
+                  </div>
+                <% end %>
+              <% end %>
             <% else %>
-              <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3 mb-auto" %>
+              <p class="px-3 py-1 m-0 fs-6">No tags</p>
             <% end %>
             <button class="ms-3 btn btn-secondary">
               <%= link_to "Leave review", new_license_review_path(license, @review), class: "text-decoration-none text-white" %>
@@ -18,18 +27,9 @@
         </div>
         <div class="col-md-8">
           <div class="card-body m-3">
-            <h5 class="card-title"> <%= license.software.name %> </h5>
-            <p class="card-text"><%= truncate(software.description, length: 60, omission: '...') %></p>
-            <% if software.reviews.presence %>
-              <p class="card-text">
-                <%= software.average_rating %>
-                <i class="fa-solid fa-star text-warning"></i>
-              </p>
-            <% else %>
-              <p class="card-text"><strong>No ratings</strong></p>
-            <% end %>
-            <p class="card-text"><strong>Price:</strong> <%= license.software.price_month %> </p>
-            <p class="card-text"><strong>Tag:</strong> <%= license.software.tag %> </p>
+            <h5 class="card-title"><%= software.name %></h5>
+            <p class="card-text"><%= truncate(software.description, length: 80, omission: '...') %></p>
+            <p class="card-text"><strong>Price:</strong> <%= software.price_month.presence || "Free" %></p>
           </div>
         </div>
       </div>

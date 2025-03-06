@@ -5,14 +5,14 @@
     </div>
   </div>
 
-  <% Software::TAG_LIST.each do |tag| %>
+  <% TeamTag.all.each do |team_tag| %>
       <div class="mt-4 border-bottom">
-        <h5 class=""><%= tag %></h5>
+        <h5 class=""><%= team_tag.name %></h5>
       </div>
       <div class="my-5">
         <div class="row g-5">
             <% @softwares.each do |software| %>
-              <% if software.tag.include?(tag) %>
+              <% if software.team_tags.include?(team_tag) %>
                 <div class="col-md-4 p-0">
                   <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
                     <div class="app-card mb-3" style="max-width: 540px; height: 260px;">
@@ -23,12 +23,12 @@
                           <% else %>
                             <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3" %>
                           <% end %>
-                          <div class="tag-small px-3">
-                            <% if software.tag.present? %>
-                              <% software.tag.each do |tag| %>
-                                <% unless tag.empty? %>
-                                  <div class="tag mb-2">
-                                    <p class="px-3 py-1 m-0"> <%= truncate(tag, length: 17, omission: '...') %> </p>
+                          <div class="tag-small px-3 ">
+                            <% if software.team_tags.any? %>
+                              <% software.team_tags.each do |tag| %>
+                                <% if tag.name.present? %>
+                                  <div class="tag team-tag mb-2">
+                                    <p class="px-3 py-1 m-0"> <%= truncate(tag.name, length: 17, omission: '...') %> </p>
                                   </div>
                                 <% end %>
                               <% end %>
@@ -54,9 +54,9 @@
                             </div>
                             <p class="card-text"><%= truncate(software.description, length: 60, omission: '...') %></p>
                             <div>
-                              <% if software.category.present? %>
-                                <div class="tag bg-info me-2 mb-2">
-                                  <p class="px-3 py-1 m-0"> <%= software.category %> </p>
+                              <% if software.category_tags.any? %>
+                                <div class="tag <%= software.category_tags.first.color %> me-2 mb-2">
+                                  <p class="px-3 py-1 m-0"> <%= software.category_tags.first.name %> </p>
                                 </div>
                               <% else %>
                                 <p>No category</p>

@@ -62,16 +62,16 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_05_103758) do
     t.index ["license_id"], name: "index_reviews_on_license_id"
   end
 
-  create_table "softwares", force: :cascade do |t|
-    t.string "name"
-    t.float "price_month"
-    t.text "description"
-    t.string "tag"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.float "average_rating"
-    t.index ["user_id"], name: "index_softwares_on_user_id"
+    create_table "softwares", force: :cascade do |t|
+      t.string "name"
+      t.float "price_month"
+      t.text "description"
+      t.string "tag"
+      t.bigint "user_id", null: false
+      t.datetime "created_at", null: false
+      t.datetime "updated_at", null: false
+      t.float "average_rating"
+      t.index ["user_id"], name: "index_softwares_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

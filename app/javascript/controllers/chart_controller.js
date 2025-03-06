@@ -1,42 +1,53 @@
-import { Controller } from "@hotwired/stimulus"
-
+import { Controller } from "@hotwired/stimulus";
 import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
 
-// Connects to data-controller="chart"
 export default class extends Controller {
+  static targets = []
+
   connect() {
-    console.log("hello from line");
+    this.canvas = document.createElement("canvas");
+    this.element.appendChild(this.canvas);
+
     const worldPopulationGrowth = {
-      2020: 7794798739,
-      2019: 7811293698,
-      2018: 7729902781,
-      2017: 7645617954,
-      2016: 7558554526,
-      2015: 7470491872,
-      2014: 7381616244,
-      2013: 7291793585,
-      2012: 7201202485,
-      2011: 7110923765,
-      2010: 7021732148
+      app_1: 1,
+      app_2: 7,
+      app_3: 32,
+      app_4: 12,
+      app_5: 22
     };
 
     const labels = Object.keys(worldPopulationGrowth);
     const data = Object.values(worldPopulationGrowth);
 
-    this.chart = new Chart(this.element, {
-      type: 'line',
+    this.chart = new Chart(this.canvas, {
+      type: 'bar',
       data: {
         labels,
-        datasets: [{
-          label: 'World population growth',
-          data,
-          backgroundColor: [
-            'rgb(255, 99, 132)',
-          ],
-          hoverOffset: 4
-        }]
+        datasets: [
+          {
+            label: 'Users per app',
+            data,
+            fill: false,
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+          }
+        ]
       }
     });
+  }
+
+  disconnect() {
+    if (this.chart) {
+      this.chart.destroy();
+    }
   }
 }

@@ -9,11 +9,11 @@ class LicensesController < ApplicationController
     @license = License.new(license_params)
     @license.software = @software
     @license.user = current_user
-    @license.save
 
-    if @license.valid?
-      redirect_to software_path(@software)
+    if @license.save
+      redirect_to my_licenses_path
     else
+      flash[:error] = @license.errors.full_messages.join(", ")
       render :new, status: :unprocessable_entity
     end
   end

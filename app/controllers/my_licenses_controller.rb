@@ -6,4 +6,5 @@ class MyLicensesController < ApplicationController
     @licenses_active = License.active_license_per_user(current_user.id).includes(:software)
     @licenses_past = License.past_license_per_user(current_user.id).includes(:software)
   end
+
 end

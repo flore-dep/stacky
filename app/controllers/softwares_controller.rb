@@ -5,14 +5,19 @@ class SoftwaresController < ApplicationController
   def index
     session[:mode] = "user"
     @softwares = Software.all
+
     if params[:query].present?
-      @softwares = Software.where("name ILIKE ?", "%#{params[:query]}%")
+      @softwares = Software.global_search("%#{params[:query]}%")
     end
-    @softwares_by_tag = @softwares.group_by(&:tag)
   end
 
   def show
     @reviews = @software.reviews
+    @license = License.new
+    @existing_license = License.where(software_id: @software.id, user_id: current_user.id)
+    if @existing_license.present?
+      @end_date_validity = License.find(@existing_license).end_at > Date.today
+    end
   end
 
   def new
@@ -49,7 +54,7 @@ class SoftwaresController < ApplicationController
   private
 
   def software_params
-    params.require(:software).permit(:name, :price_month, :description, :tag, :logo)
+    params.require(:software).permit(:name, :price_month, :description, :logo, tag: [])
   end
 
   def set_software

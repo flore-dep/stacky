@@ -53,9 +53,7 @@ gem "devise"
 
 gem "cloudinary"
 gem "faker"
-
-gem "chart-js-rails"
-
+gem "pg_search"
 
 group :development, :test do
   gem "dotenv-rails"

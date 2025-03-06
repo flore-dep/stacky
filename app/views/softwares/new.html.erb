@@ -9,6 +9,7 @@
           <%= f.input :logo, as: :file %>
           <%= f.input :description %>
           <%= f.input :price_month %>
+          <%= f.input :category, collection: Software::CATEGORIES %>
           <%= f.input :tag, as: :check_boxes,
                         collection: Software::TAG_LIST,
                         wrapper_html: { class: 'row' },

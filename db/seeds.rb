@@ -1,21 +1,6 @@
 require "open-uri"
 require "csv"
 
-TAG_LIST = [
-  "International",
-  "Produit",
-  "Administratif & Juridique",
-  "Business",
-  "Financements",
-  "RH",
-  "Tech",
-  "Stratégie",
-  "Autre",
-  "CSM",
-  "Marketing & Communication",
-  "Collaboration & Management"
-]
-
 puts "Cleaning database..."
 Review.destroy_all
 License.destroy_all
@@ -32,10 +17,30 @@ users = [flore, vic, jean, romain]
 
 filepath = File.expand_path("data_seed.csv", __dir__)
 
+softwares_init = []
+
+urls.each do |url|
+  software_init = Software.create!(
+    name: Faker::Company.name,
+    price_month: (50..150).to_a.sample,
+    description: Faker::Quotes::Shakespeare.hamlet_quote,
+    tag: Software::TAG_LIST.sample(rand(1..3)),
+    category: Software::CATEGORIES.sample,
+    user: users.sample
+  )
+  file = URI.open(url)
+  software_init.logo.attach(io: file, filename: "default_logo.jpg", content_type: "image/jpeg")
+  softwares_init << software_init
+end
+
+10.times do
 CSV.foreach(filepath) do |row|
   software = Software.create!(
     name: row[0],
     price_month: (50..150).to_a.sample,
+    description: Faker::Quotes::Shakespeare.hamlet_quote,
+    tag: Software::TAG_LIST.sample(rand(1..3)),
+    category: Software::CATEGORIES.sample,
     description: row[1],
     long_description: row[2],
     website: row[3],

@@ -56,7 +56,8 @@ CSV.foreach(filepath) do |row|
   )
   file = URI.open(row[4])
   software.logo.attach(io: file, filename: "default_logo.jpg", content_type: "image/jpeg")
-  SoftwareTag.create!(software: software, category_tag: CategoryTag.all.sample, team_tag: TeamTag.all.sample)
+  SoftwareTag.create!(software: software, category_tag: CategoryTag.all.sample)
+  SoftwareTag.create!(software: software, team_tag: TeamTag.all.sample)
 end
 
 puts "Creating licenses..."

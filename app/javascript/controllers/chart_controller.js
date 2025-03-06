@@ -8,17 +8,19 @@ export default class extends Controller {
   connect() {
     this.canvas = document.createElement("canvas");
     this.element.appendChild(this.canvas);
+    var chartData = JSON.parse(chartElement.getAttribute('data-chart-data'));
+    var chartLabels = JSON.parse(chartElement.getAttribute('data-chart-labels'));
 
-    const worldPopulationGrowth = {
-      app_1: 1,
-      app_2: 7,
-      app_3: 32,
-      app_4: 12,
-      app_5: 22
-    };
+    // const worldPopulationGrowth = {
+    //   app_1: 1,
+    //   app_2: 7,
+    //   app_3: 32,
+    //   app_4: 12,
+    //   app_5: 22
+    // };
 
-    const labels = Object.keys(worldPopulationGrowth);
-    const data = Object.values(worldPopulationGrowth);
+    // const labels = Object.keys(worldPopulationGrowth);
+    // const data = Object.values(worldPopulationGrowth);
 
     this.chart = new Chart(this.canvas, {
       type: 'bar',
@@ -27,7 +29,7 @@ export default class extends Controller {
         datasets: [
           {
             label: 'Users per app',
-            data,
+            data: chartData,
             fill: false,
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',

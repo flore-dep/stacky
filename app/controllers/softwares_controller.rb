@@ -3,8 +3,8 @@ class SoftwaresController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
+    session[:mode] = "user"
     @softwares = Software.all
-
     if params[:query].present?
       @softwares = Software.where("name ILIKE ?", "%#{params[:query]}%")
     end

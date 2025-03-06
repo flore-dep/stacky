@@ -1,5 +1,20 @@
 require "open-uri"
 
+TAG_LIST = [
+  "International",
+  "Produit",
+  "Administratif & Juridique",
+  "Business",
+  "Financements",
+  "RH",
+  "Tech",
+  "Stratégie",
+  "Autre",
+  "CSM",
+  "Marketing & Communication",
+  "Collaboration & Management"
+]
+
 puts "Cleaning database..."
 Review.destroy_all
 License.destroy_all
@@ -29,7 +44,7 @@ urls.each do |url|
     name: Faker::Company.name,
     price_month: (50..150).to_a.sample,
     description: Faker::Quotes::Shakespeare.hamlet_quote,
-    tag: Faker::Company.industry,
+    tag: TAG_LIST.sample(rand(1..3)), # Génère entre 1 et 3 tags aléatoires
     user: users.sample
   )
   file = URI.open(url)
@@ -37,18 +52,17 @@ urls.each do |url|
   softwares_init << software_init
 end
 
-
 10.times do
   software = Software.create!(
     name: Faker::Company.name,
     price_month: (50..150).to_a.sample,
     description: Faker::Quotes::Shakespeare.hamlet_quote,
-    tag: Faker::Company.industry,
+    tag: TAG_LIST.sample(rand(1..3)), # Génère entre 1 et 3 tags aléatoires
     user: users.sample
   )
 
   sample_attributes = softwares_init.sample.logo.attachments.first.attributes
-  sample_attributes.delete("id")&&sample_attributes.delete("created_at")
+  sample_attributes.delete("id") && sample_attributes.delete("created_at")
   sample_attributes["record_id"] = software.id
   ActiveStorage::Attachment.create!(sample_attributes)
 end

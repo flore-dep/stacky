@@ -5,10 +5,10 @@ class SoftwaresController < ApplicationController
   def index
     session[:mode] = "user"
     @softwares = Software.all
+
     if params[:query].present?
-      @softwares = Software.where("name ILIKE ?", "%#{params[:query]}%")
+      @softwares = Software.global_search("%#{params[:query]}%")
     end
-    @softwares_by_tag = @softwares.group_by(&:tag)
   end
 
   def show
@@ -49,7 +49,7 @@ class SoftwaresController < ApplicationController
   private
 
   def software_params
-    params.require(:software).permit(:name, :price_month, :description, :tag, :logo)
+    params.require(:software).permit(:name, :price_month, :description, :logo, tag: [])
   end
 
   def set_software

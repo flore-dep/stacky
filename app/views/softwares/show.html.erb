@@ -23,11 +23,19 @@
         <div class="mt-3 mb-4">
           <p> <%= @software.description %> </p>
         </div>
-        <div class="">
-            <div class="tag">
-              <p class="px-3 py-1"> <%= @software.tag %> </p>
-            </div>
-          </div>
+        <div class="d-flex align-content-center">
+          <% if @software.tag.present? %>
+            <% @software.tag.each do |tag| %>
+              <% unless tag.empty? %>
+                <div class="tag me-2">
+                  <p class="px-3 py-1 m-0"> <%= tag %> </p>
+                </div>
+              <% end %>
+            <% end %>
+          <% else %>
+            <p>No tags</p>
+          <% end %>
+        </div>
       </div>
     <div class="d-flex flex-column align-items-end mt-4 me-4 ms-auto">
       <div class="">

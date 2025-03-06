@@ -1,0 +1,2 @@
+class CategoryTag < ApplicationRecord
+end

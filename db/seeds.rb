@@ -17,6 +17,9 @@ TAG_LIST = [
 ]
 
 puts "Cleaning database..."
+SoftwareTag.destroy_all
+TeamTag.destroy_all
+CategoryTag.destroy_all
 Review.destroy_all
 License.destroy_all
 Software.all.each { |software| software.logo.purge_later } # Supprime les fichiers attachés
@@ -29,6 +32,15 @@ vic = User.create!(first_name: "victor", last_name: "hugo", username: "vhugo", e
 jean = User.create!(first_name: "jean", last_name: "valjean", username: "jval", email: "jean@test.com", password: "test12345")
 romain = User.create!(first_name: "romin", last_name: "desmois", username: "rdesm", email: "romain@test.com", password: "test12345")
 users = [flore, vic, jean, romain]
+
+# category_tag_productivity = CategoryTag.create!(name: "Productivity", color:)
+# category_tag_projectmanagement  = CategoryTag.create!(name: "Project Management", color:)
+# category_tag_communication  = CategoryTag.create!(name: "Communication", color:)
+# category_tag_crm  = CategoryTag.create!(name: "CRM", color:)
+# category_tag_businessintelligence  = CategoryTag.create!(name: "Business Intelligence", color:)
+# category_tag_automation  = CategoryTag.create!(name: "Automation", color:)
+
+
 
 filepath = File.expand_path("data_seed.csv", __dir__)
 

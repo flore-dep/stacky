@@ -14,6 +14,7 @@ class LicensesController < ApplicationController
     if @license.valid?
       redirect_to software_path(@software)
     else
+      flash[:error] = @license.errors.full_messages.join(", ")
       render :new, status: :unprocessable_entity
     end
   end

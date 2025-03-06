@@ -1,20 +1,5 @@
 require "open-uri"
 
-TAG_LIST = [
-  "International",
-  "Produit",
-  "Administratif & Juridique",
-  "Business",
-  "Financements",
-  "RH",
-  "Tech",
-  "Stratégie",
-  "Autre",
-  "CSM",
-  "Marketing & Communication",
-  "Collaboration & Management"
-]
-
 puts "Cleaning database..."
 Review.destroy_all
 License.destroy_all
@@ -44,7 +29,8 @@ urls.each do |url|
     name: Faker::Company.name,
     price_month: (50..150).to_a.sample,
     description: Faker::Quotes::Shakespeare.hamlet_quote,
-    tag: TAG_LIST.sample(rand(1..3)), # Génère entre 1 et 3 tags aléatoires
+    tag: Software::TAG_LIST.sample(rand(1..3)),
+    category: Software::CATEGORIES.sample,
     user: users.sample
   )
   file = URI.open(url)
@@ -57,7 +43,8 @@ end
     name: Faker::Company.name,
     price_month: (50..150).to_a.sample,
     description: Faker::Quotes::Shakespeare.hamlet_quote,
-    tag: TAG_LIST.sample(rand(1..3)), # Génère entre 1 et 3 tags aléatoires
+    tag: Software::TAG_LIST.sample(rand(1..3)),
+    category: Software::CATEGORIES.sample,
     user: users.sample
   )
 

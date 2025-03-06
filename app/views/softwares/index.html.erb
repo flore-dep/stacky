@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row justify-content-between bg-white p-3 border-bottom">
+  <div class="row justify-content-between bg-white p-3">
     <div class="col-5 m-3">
       <h3 class="m-0">Find your crush</h3>
     </div>
@@ -39,8 +39,29 @@
                         </div>
                         <div class="col-md-8">
                           <div class="card-body m-3">
-                            <h5 class="card-title"><%= software.name %></h5>
-                            <p class="card-text"><%= truncate(software.description, length: 80, omission: '...') %></p>
+                            <div class="d-flex">
+                              <h5 class="card-title">
+                                <%= software.name %> -
+                                <% if software.average_rating.present? %>
+                                  <span class="card-text fw-light">
+                                    <%= software.average_rating %>
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                  </span>
+                                <% else %>
+                                  <span class="card-text fw-light">No ratings</span>
+                                <% end %>
+                              </h5>
+                            </div>
+                            <p class="card-text"><%= truncate(software.description, length: 60, omission: '...') %></p>
+                            <div>
+                              <% if software.category.present? %>
+                                <div class="tag bg-info me-2 mb-2">
+                                  <p class="px-3 py-1 m-0"> <%= software.category %> </p>
+                                </div>
+                              <% else %>
+                                <p>No category</p>
+                              <% end %>
+                            </div>
                             <p class="card-text"><strong>Price:</strong> <%= software.price_month.presence || "Free" %></p>
                           </div>
                         </div>

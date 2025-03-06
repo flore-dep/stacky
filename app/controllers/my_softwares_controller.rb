@@ -3,5 +3,6 @@ class MySoftwaresController < ApplicationController
 
   def index
     @my_softwares = Software.where(user_id: current_user.id)
+    session[:mode] = "owner"
   end
 end

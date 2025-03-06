@@ -7,5 +7,4 @@ class User < ApplicationRecord
   has_many :licenses
   has_many :softwares, through: :licenses
   has_many :reviews, through: :licenses
-  has_many :softwares, through: :licenses
 end

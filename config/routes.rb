@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[new create]
   end
 
-  resources :my_licenses, only: :index
+  resources :my_licenses, only: %i[index edit update]
 
   get 'my_profile', to: 'pages#profile'
 

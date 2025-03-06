@@ -17,7 +17,6 @@ class SoftwaresController < ApplicationController
     if user_signed_in?
       @existing_license = License.where(software_id: @software.id, user_id: current_user.id)
     end
-
     if @existing_license.present?
       @end_date_validity = License.find(@existing_license).end_at > Date.today
     end

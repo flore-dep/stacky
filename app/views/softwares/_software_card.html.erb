@@ -1,5 +1,5 @@
 
-      <div class="col-4 p-0">
+      <div class="col-4 p-0 license-card">
         <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
           <div class="app-card mb-3" style="max-width: 540px; height: 260px;">
             <div class="row g-0">
@@ -25,10 +25,9 @@
                     <h5 class="card-title mb-2"><%= software.name %></h5>
                     <p class="card-text"><%= license.start_at.strftime("%d %B %Y") %> - <%= license.end_at.strftime("%d %B %Y") %></p>
                     <p class="card-text"><strong>Cost per month:</strong> <%= number_to_currency(software.price_month, unit: "€") %></p>
-
               </div>
             </div>
-            <div class="d-flex justify-content-end link-button pe-3">
+            <div class="link-button review-link">
               <%= link_to "Leave a review", new_license_review_path(license), class:"text-decoration-none text-dark"%>
             </div>
           </div>

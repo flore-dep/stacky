@@ -1,3 +1,8 @@
 <div class="container mt-1">
-  <div class="chart" data-controller="chart"></div>
+  <% @my_softwares.each do |mysoft| %>
+  <div class="chart" data-controller="chart"
+    data-chart-chartData-value="<% mysoft.user %>"
+    data-chart-chartLabels-value ="<% mysoft %>">
+  </div>
+  <% end %>
 </div>

@@ -23,7 +23,7 @@ export default class extends Controller {
     this.chart = new Chart(this.canvas, {
       type: 'bar',
       data: {
-        labels,
+        labels: chartLabels,
         datasets: [
           {
             label: 'Users per app',

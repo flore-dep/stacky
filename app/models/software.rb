@@ -6,6 +6,8 @@ class Software < ApplicationRecord
   belongs_to :user
   has_many :licenses
   has_many :reviews, through: :licenses
+  has_one :category_tag, through: :softwares_tags
+  has_many :team_tag, through: :softwares_tags
 
   TAG_LIST = [
     "International",
@@ -22,10 +24,26 @@ class Software < ApplicationRecord
     "Collaboration & Management"
   ]
 
+  CATEGORIES = [
+    "Communication",
+    "Project Management",
+    "Productivity",
+    "Storage",
+    "Design",
+    "Development",
+    "Cloud",
+    "Payment",
+    "CRM",
+    "Support",
+    "Marketing",
+    "Analytics"
+  ]
+
   validate :maximum_three_tags
+  validates :name, :price_month, :category, presence: true
 
   pg_search_scope :global_search,
-    against: [ :name, :description, :tag ],
+    against: [ :name, :description, :tag, :category ],
     associated_against: {
       user: [ :username ]
     },

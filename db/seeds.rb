@@ -68,7 +68,7 @@ end
 end
 
 Software.all.each do |software|
-  license = License.new()
+  license = License.new(start_at: "2025-01-01" ,end_at: "2025-03-01")
   license.software = software
   license.user = users.sample
   license.save

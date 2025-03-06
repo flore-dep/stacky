@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_06_141657) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_06_150321) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_06_141657) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "category_tags", force: :cascade do |t|
+    t.string "name"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "licenses", force: :cascade do |t|
     t.date "start_at"
     t.date "end_at"
@@ -62,6 +69,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_06_141657) do
     t.index ["license_id"], name: "index_reviews_on_license_id"
   end
 
+  create_table "software_tags", force: :cascade do |t|
+    t.bigint "software_id", null: false
+    t.bigint "category_tag_id", null: false
+    t.bigint "team_tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_tag_id"], name: "index_software_tags_on_category_tag_id"
+    t.index ["software_id"], name: "index_software_tags_on_software_id"
+    t.index ["team_tag_id"], name: "index_software_tags_on_team_tag_id"
+  end
+
   create_table "softwares", force: :cascade do |t|
     t.string "name"
     t.float "price_month"
@@ -71,10 +89,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_06_141657) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "average_rating"
-    t.string "category"
     t.string "website"
     t.text "long_description"
+    t.string "category"
     t.index ["user_id"], name: "index_softwares_on_user_id"
+  end
+
+  create_table "team_tags", force: :cascade do |t|
+    t.string "name"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -99,5 +124,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_06_141657) do
   add_foreign_key "licenses", "softwares"
   add_foreign_key "licenses", "users"
   add_foreign_key "reviews", "licenses"
+  add_foreign_key "software_tags", "category_tags"
+  add_foreign_key "software_tags", "softwares"
+  add_foreign_key "software_tags", "team_tags"
   add_foreign_key "softwares", "users"
 end

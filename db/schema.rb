@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_06_141657) do
     t.string "name"
     t.float "price_month"
     t.text "description"
-    t.string "tag"
+    t.string "tag", default: [], array: true
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -21,6 +21,19 @@
                     <% else %>
                       <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3" %>
                     <% end %>
+                    <div class="tag-small px-3">
+                      <% if software.tag.present? %>
+                        <% software.tag.each do |tag| %>
+                          <% unless tag.empty? %>
+                            <div class="tag mb-2">
+                              <p class="px-3 py-1 m-0"> <%= truncate(tag, length: 17, omission: '...') %> </p>
+                            </div>
+                          <% end %>
+                        <% end %>
+                      <% else %>
+                        <p class="px-3 py-1 m-0 fs-6">No tags</p>
+                      <% end %>
+                    </div>
                   </div>
                   <div class="col-md-8">
                     <div class="card-body m-3">
@@ -35,7 +48,6 @@
                          <p class="card-text">No ratings</p>
                         <% end %>
                       <p class="card-text"><strong>Price:</strong> <%= software.price_month.presence || "Free" %></p>
-                      <p class="card-text"><strong>Tag:</strong> <%= software.tag.presence || "No tag" %></p>
                     </div>
                   </div>
                 </div>
@@ -61,6 +73,19 @@
                   <% else %>
                     <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3" %>
                   <% end %>
+                  <div class="tag-small px-3">
+                    <% if software.tag.present? %>
+                      <% software.tag.each do |tag| %>
+                        <% unless tag.empty? %>
+                          <div class="tag mb-2">
+                            <p class="px-3 py-1 m-0"> <%= truncate(tag, length: 17, omission: '...') %> </p>
+                          </div>
+                        <% end %>
+                      <% end %>
+                    <% else %>
+                      <p class="px-3 py-1 m-0 fs-6">No tags</p>
+                    <% end %>
+                  </div>
                 </div>
                 <div class="col-md-8">
                   <div class="card-body m-3">
@@ -75,7 +100,6 @@
                       <p class="card-text"><strong>No ratings</strong></p>
                     <% end %>
                     <p class="card-text"><strong>Price:</strong> <%= software.price_month.presence || "Free" %></p>
-                    <p class="card-text"><strong>Tag:</strong> <%= software.tag.presence || "No tag" %></p>
                   </div>
                 </div>
               </div>

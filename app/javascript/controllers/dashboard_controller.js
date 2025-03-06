@@ -5,17 +5,17 @@ export default class extends Controller {
   static targets = ["dashboard", "myApps", "dashboardButton", "myAppsButton"]
 
   connect() {
-    console.log("Fleur Imichon");
+    console.log("Flore Imichon");
   }
 
   viewDashboard() {
     this.myAppsButtonTarget.classList.remove("green-button-visible");
-    this.myAppsButtonTarget.classList.add("grey-button-disable");
-    this.dashboardButtonTarget.classList.add("green-button-visible")
-    this.myAppsTarget.classList.add("d-none");
-    this.dashboardTarget.classList.remove("d-none");
     this.myAppsButtonTarget.classList.add("gray-button-disable");
-    console.log(this.viewDashboard)
+    this.myAppsTarget.classList.add("d-none");
+    this.myAppsButtonTarget.classList.add("gray-button-disable");
+    this.dashboardButtonTarget.classList.add("green-button-visible")
+    this.dashboardTarget.classList.remove("d-none");
+
   }
 
   viewApps() {
@@ -25,6 +25,6 @@ export default class extends Controller {
     this.myAppsButtonTarget.classList.remove("gray-button-disable");
     this.myAppsButtonTarget.classList.add("green-button-visible");
     this.myAppsTarget.classList.remove("d-none");
-    console.log(this.viewApps)
+
   }
 }

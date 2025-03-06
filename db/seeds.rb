@@ -1,6 +1,21 @@
 require "open-uri"
 require "csv"
 
+TAG_LIST = [
+  "International",
+  "Produit",
+  "Administratif & Juridique",
+  "Business",
+  "Financements",
+  "RH",
+  "Tech",
+  "Stratégie",
+  "Autre",
+  "CSM",
+  "Marketing & Communication",
+  "Collaboration & Management"
+]
+
 puts "Cleaning database..."
 Review.destroy_all
 License.destroy_all
@@ -24,7 +39,7 @@ CSV.foreach(filepath) do |row|
     description: row[1],
     long_description: row[2],
     website: row[3],
-    tag: Faker::Company.industry,
+    tag: TAG_LIST.sample(rand(1..3)),
     user: users.sample
   )
   file = URI.open(row[4])

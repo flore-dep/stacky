@@ -14,6 +14,7 @@ class SoftwaresController < ApplicationController
   def show
     @reviews = @software.reviews
     @license = License.new
+    @existing_license = License.where(software_id: @software.id, user_id: current_user.id).present?
   end
 
   def new

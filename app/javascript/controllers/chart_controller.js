@@ -3,24 +3,11 @@ import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
 
 export default class extends Controller {
-  static targets = []
-
   connect() {
     this.canvas = document.createElement("canvas");
     this.element.appendChild(this.canvas);
-    var chartData = this.element.getAttribute('data-chart-data').split(",").count;
+    var chartData = this.element.getAttribute('data-chart-data').split(",").map(Number);
     var chartLabels = this.element.getAttribute('data-chart-labels').split(",");
-
-    // const worldPopulationGrowth = {
-    //   app_1: 1,
-    //   app_2: 7,
-    //   app_3: 32,
-    //   app_4: 12,
-    //   app_5: 22
-    // };
-
-    // const labels = Object.keys(worldPopulationGrowth);
-    // const data = Object.values(worldPopulationGrowth);
 
     this.chart = new Chart(this.canvas, {
       type: 'bar',

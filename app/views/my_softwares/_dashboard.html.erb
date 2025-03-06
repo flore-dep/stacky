@@ -1,11 +1,9 @@
-<% user_counts = @my_softwares.each_with_object(Hash.new(0)) do |mysoft, counts|%>%
+<% user_counts = @my_softwares.each_with_object(Hash.new(0)) do |mysoft, counts|%>
   <% counts[mysoft.name] += 1 %>
 <% end %>
 
-# Convertir les données en chaînes de caractères pour les attributs
 <% chart_data = user_counts.values.join(',') %>
 <% chart_labels = user_counts.keys.join(',') %>
-
 
 <div class="container mt-1">
   <div class="chart" data-controller="chart"

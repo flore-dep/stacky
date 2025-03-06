@@ -18,6 +18,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body m-3">
+            <p class="card-text"><strong>Tag:</strong> <%= license.software.tag %> </p>
             <h5 class="card-title"> <%= license.software.name %> </h5>
             <p class="card-text"><%= truncate(software.description, length: 60, omission: '...') %></p>
             <% if software.reviews.presence %>
@@ -29,7 +30,6 @@
               <p class="card-text"><strong>No ratings</strong></p>
             <% end %>
             <p class="card-text"><strong>Price:</strong> <%= license.software.price_month %> </p>
-            <p class="card-text"><strong>Tag:</strong> <%= license.software.tag %> </p>
           </div>
         </div>
       </div>

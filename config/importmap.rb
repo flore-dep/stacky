@@ -9,3 +9,4 @@ pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
 pin "flatpickr" # @4.6.13
 pin "chart.js" # @4.4.8
+pin "@kurkle/color", to: "@kurkle--color.js" # @0.3.4

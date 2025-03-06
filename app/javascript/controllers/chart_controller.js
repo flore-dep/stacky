@@ -1,5 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
-import { Chart } from "chart.js";
+
+import { Chart, registerables } from "chart.js";
+Chart.register(...registerables);
 
 // Connects to data-controller="chart"
 export default class extends Controller {

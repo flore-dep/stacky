@@ -54,6 +54,8 @@ gem "devise"
 gem "cloudinary"
 gem "faker"
 
+gem "chart-js-rails"
+
 
 group :development, :test do
   gem "dotenv-rails"

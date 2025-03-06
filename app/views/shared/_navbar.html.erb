@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon bg-dark">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon bg-dark sticky-top">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand text-white ms-3" do %>
       <%= image_tag("logos/logo_stacky.png", alt: "Stacky", width: "50") %> Stacky
@@ -7,7 +7,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <%= form_with(url: softwares_path, method: :get, local: true, class: "d-flex", role: "search") do |form| %>
+    <%= form_with(url: softwares_path, method: :get, local: true, class: "d-flex w-25", role: "search") do |form| %>
       <%= form.text_field :query, class: "form-control me-2", placeholder: "Search a software...", aria_label: "Search" %>
       <%= form.submit "Search", class: "btn btn-outline-success" %>
     <% end %>

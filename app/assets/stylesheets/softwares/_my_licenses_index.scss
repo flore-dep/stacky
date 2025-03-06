@@ -1,0 +1,44 @@
+.green-button-visible {
+  background-color: rgba(28, 221, 135, 0.5);
+  color: $dark;
+  border-radius: 15px;
+  width: fit-content;
+  block-size: fit-content;
+};
+
+.green-button-disable {
+  background-color: rgba(245, 245, 246, 0.5);
+  color: $dark;
+  border-radius: 15px;
+  width: fit-content;
+  block-size: fit-content;
+};
+
+.green-button-disable {
+  &:hover {
+    color: $dark;
+    background-color: rgba(28, 221, 135, 0.5);
+    transition: 0.4s ease-in-out;
+  }
+}
+
+.gray-button-disable {
+  border-bottom: 1px solid $light-gray;
+  color: $light-gray;
+  width: fit-content;
+  block-size: fit-content;
+  transition: 0.8s ease-in-out;
+}
+
+.gray-button-active {
+  border-bottom: 1px solid $light-gray;
+  color: $dark;
+  width: fit-content;
+  block-size: fit-content;
+}
+
+.gray-button-disable {
+  &:hover {
+    color: $dark;
+  }
+}

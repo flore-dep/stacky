@@ -13,14 +13,23 @@
     <% end %>
 
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" data-controller="navbar-toggler">
         <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
+          <li class="nav-item active" data-navbar-toggler-target="userLi">
+            <%= link_to "Marketplace", softwares_path, class: "nav-link text-white" %>
+          </li>
+          <li class="nav-item active" data-navbar-toggler-target="userLi">
             <%= link_to "My licenses", my_licenses_path, class: "nav-link text-white" %>
           </li>
-          <li class="nav-item me-3">
+          <li class="nav-item" data-navbar-toggler-target="ownerLi">
             <%= link_to "My softwares", my_softwares_path, class: "nav-link text-white" %>
+          </li>
+          <li class="nav-item d-flex align-items-center px-3 text-white rounded me-2" style="width: 120px; display: flex; justify-content: space-between;">
+            <div class="form-check form-switch d-flex align-items-center" data-navbar-toggler-target="toggle">
+              <input class="form-check-input me-2" type="checkbox" role="switch" id="flexSwitchCheckDefault" style="transform: scale(1.2);" data-action="change->navbar-toggler#switch" <%= session[:mode] == "owner" ? "checked": "" %>>
+              <label class="form-check-label ms-2" for="flexSwitchCheckDefault"><%= session[:mode] %></label>
+            </div>
           </li>
         <% else %>
           <li class="nav-item me-3">

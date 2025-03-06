@@ -1,7 +1,8 @@
+<% @my_softwares.each do |mysoft| %>
 <div class="container mt-1">
   <div class="chart" data-controller="chart"
-    data-chart-data="<%= @my_softwares.licenses.users.to_json %>"
-    data-chart-labels="<%= @my_softwares.to_json %>">
+    data-chart-data="<%= mysoft.user %>"
+    data-chart-labels="<%= mysoft.name %>">
   </div>
-  <%= javascript_include_tag 'controllers/chart_controller.js', defer: true %>
 </div>
+<% end %>

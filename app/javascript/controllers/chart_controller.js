@@ -8,8 +8,8 @@ export default class extends Controller {
   connect() {
     this.canvas = document.createElement("canvas");
     this.element.appendChild(this.canvas);
-    var chartData = JSON.parse(chartElement.getAttribute('data-chart-data'));
-    var chartLabels = JSON.parse(chartElement.getAttribute('data-chart-labels'));
+    var chartData = this.element.getAttribute('data-chart-data');
+    var chartLabels = this.element.getAttribute('data-chart-labels');
 
     // const worldPopulationGrowth = {
     //   app_1: 1,

@@ -13,6 +13,7 @@ class SoftwaresController < ApplicationController
 
   def show
     @reviews = @software.reviews
+    @license = License.new
   end
 
   def new

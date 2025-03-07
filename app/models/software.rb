@@ -6,7 +6,8 @@ class Software < ApplicationRecord
   belongs_to :user
   has_many :licenses
   has_many :reviews, through: :licenses
-  has_one :software_tag
+  has_many :software_tags
+  has_many :category_tags, through: :software_tags
   has_many :team_tags, through: :software_tags
 
   TAG_LIST = [

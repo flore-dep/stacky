@@ -7,13 +7,15 @@ class SoftwareTag < ApplicationRecord
   validates :software_id, uniqueness: {
     scope: :category_tag_id,
     message: "You already have this tag for this software.",
-  }
+  }, if: -> { category_tag_id.present? }
+
   validates :software_id, uniqueness: {
     scope: :team_tag_id,
     message: "You already have this tag for this software.",
-  }
-  validate :category_tag_occurences
-  validate :team_tag_occurences
+  }, if: -> { team_tag_id.present? }
+
+  validate :category_tag_occurences, if: -> { category_tag_id.present? }
+  validate :team_tag_occurences, if: -> { team_tag_id.present? }
 
   private
 

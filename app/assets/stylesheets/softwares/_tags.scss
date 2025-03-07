@@ -1,0 +1,32 @@
+// Définition des couleurs des catégories
+$category-productivity: #CDEFFC;  // Pastel du bleu (Productivity)
+$category-projectmanagement: #FDEEDC;  // Pastel de l'orange (Project Management)
+$category-communication: #E3D1F2;  // Pastel du violet (Communication)
+$category-crm: #FAD4D4;  // Pastel du rouge (CRM)
+$category-businessintelligence: #D3E3F5;  // Pastel du bleu foncé (BI)
+$category-automation: #CBE9E4;  // Pastel du vert (Automation)
+
+// Style global des tags
+.tag {
+  color: #1A1C1F;
+  border-radius: 15px;
+  width: fit-content;
+  block-size: fit-content;
+  padding: 4px 8px; // Ajout d'un padding pour un meilleur rendu
+  font-size: 10px;
+  font-weight: bold;
+}
+
+// Appliquer les couleurs spécifiques aux catégories
+.category-productivity { @extend .tag; background-color: $category-productivity; }
+.category-projectmanagement { @extend .tag; background-color: $category-projectmanagement; }
+.category-communication { @extend .tag; background-color: $category-communication; }
+.category-crm { @extend .tag; background-color: $category-crm; }
+.category-businessintelligence { @extend .tag; background-color: $category-businessintelligence; }
+.category-automation { @extend .tag; background-color: $category-automation; }
+
+// Style des tags pour les équipes
+.team-tag {
+  @extend .tag;
+  background-color: white;
+}

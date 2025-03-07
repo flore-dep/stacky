@@ -4,9 +4,9 @@
       <div class="row g-0">
         <div class="col-md-4">
           <% if software.logo.attached? %>
-            <%= cl_image_tag software.logo.key, class: "img-fluid rounded-start p-3" %>
+            <%= cl_image_tag software.logo.key, transformation: [{ crop: "c_crop", width: 110, height: 110}, {radius: 20}], class: "img-fluid rounded-start p-3" %>
           <% else %>
-            <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3" %>
+            <%= image_tag "logos/default-logo.jpg", transformation: [{ crop: "c_crop", width: 110, height: 110}], class: "img-fluid rounded-start p-3" %>
           <% end %>
           <div class="tag-small px-3">
             <% if software.tag.present? %>

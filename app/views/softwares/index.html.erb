@@ -6,6 +6,7 @@
   </div>
 
   <% TeamTag.all.each do |team_tag| %>
+    <% if @softwares.any? { |software| software.team_tags.include?(team_tag) } %>
       <div class="mt-4 border-bottom">
         <h5 class=""><%= team_tag.name %></h5>
       </div>
@@ -18,5 +19,6 @@
             <% end %>
         </div>
       </div>
+      <% end %>
   <% end %>
 </div>

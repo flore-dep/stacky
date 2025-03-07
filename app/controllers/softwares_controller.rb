@@ -20,6 +20,12 @@ class SoftwaresController < ApplicationController
     if @existing_license.present?
       @end_date_validity = License.find(@existing_license).end_at > Date.today
     end
+
+    @markers = [{
+        lat: @software.latitude,
+        lng: @software.longitude,
+      }]
+      # raise
   end
 
   def new

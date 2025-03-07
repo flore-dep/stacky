@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :license
   has_one :software, through: :license
+  has_one :user, through: :license
 
   after_commit :update_software_average_rating
   after_destroy :update_software_average_rating

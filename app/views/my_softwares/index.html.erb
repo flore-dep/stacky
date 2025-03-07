@@ -22,11 +22,16 @@
       </div>
 
 
-      <div data-dashboard-target="dashboard">
-        <div class="row g-5 mt-3">
+  <div data-dashboard-target="dashboard">
+      <div class="row g-5 mt-1">
+        <% if @my_softwares.present? %>
+          <h4> Users per apps </h4>
           <%= render 'dashboard' %>
-        </div>
+        <% else %>
+          <p>You don't have posted an app yet ;)</p>
+        <% end %>
       </div>
+    </div>
 
       <div class="d-none" data-dashboard-target="myApps">
         <div class="row g-5 mt-3">

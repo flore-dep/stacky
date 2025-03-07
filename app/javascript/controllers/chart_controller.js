@@ -3,31 +3,20 @@ import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
 
 export default class extends Controller {
-  static targets = []
-
   connect() {
     this.canvas = document.createElement("canvas");
     this.element.appendChild(this.canvas);
-
-    const worldPopulationGrowth = {
-      app_1: 1,
-      app_2: 7,
-      app_3: 32,
-      app_4: 12,
-      app_5: 22
-    };
-
-    const labels = Object.keys(worldPopulationGrowth);
-    const data = Object.values(worldPopulationGrowth);
+    var chartData = this.element.getAttribute('data-chart-data').split(",").map(Number);
+    var chartLabels = this.element.getAttribute('data-chart-labels').split(",");
 
     this.chart = new Chart(this.canvas, {
       type: 'bar',
       data: {
-        labels,
+        labels: chartLabels,
         datasets: [
           {
             label: 'Users per app',
-            data,
+            data: chartData,
             fill: false,
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',

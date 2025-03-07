@@ -111,7 +111,7 @@
           <%= image_tag("avatars/Kermit.JPG", width:"40", class: "rounded-circle") %>
         </div>
         <div class="ms-2 me-auto">
-          <div class="fw-bold">User(WIP)</div>
+          <div class="fw-bold"> <%= review.user.username %> </div>
           <div class="text-break text-muted"><%= review.comment %></div>
         </div>
         <span class="badge bg-primary rounded-pill"><%= review.rating %>/5</span>

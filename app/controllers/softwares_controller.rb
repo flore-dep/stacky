@@ -38,6 +38,7 @@ class SoftwaresController < ApplicationController
     if @software.save
       category_tag_id = software_params[:category]
       category_tag = CategoryTag.find(software_params[:category])
+
       SoftwareTag.create!(software: @software, category_tag: category_tag)
 
       team_tag_ids = software_params[:tag]
@@ -73,7 +74,7 @@ class SoftwaresController < ApplicationController
   private
 
   def software_params
-    params.require(:software).permit(:name, :price_month, :description, :logo, :category_tag, team_tag: [])
+    params.require(:software).permit(:name, :price_month, :description, :logo, :category, tag: [])
   end
 
   def set_software

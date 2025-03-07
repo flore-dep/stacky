@@ -31,7 +31,7 @@
       <div class="d-none" data-dashboard-target="myApps">
         <div class="row g-5 mt-3">
           <% @my_softwares.each do |software| %>
-            <%= render 'my_software_card', software: software %>
+            <%= render 'shared/generic_soft_card', software: software %>
           <% end %>
         </div>
       </div>

@@ -12,7 +12,7 @@ class Review < ApplicationRecord
 
   def update_software_average_rating
     ratings = software.reviews.pluck(:rating)
-    average = ratings.sum.fdiv(ratings.count)
+    average = ratings.sum.fdiv(ratings.count).round(1)
     software.update(average_rating: average)
   end
 end

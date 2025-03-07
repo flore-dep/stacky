@@ -13,62 +13,7 @@
         <div class="row g-5">
             <% @softwares.each do |software| %>
               <% if software.team_tags.include?(team_tag) %>
-                <div class="col-md-4 p-0">
-                  <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
-                    <div class="app-card mb-3" style="max-width: 540px; height: 260px;">
-                      <div class="row g-0">
-                        <div class="col-md-4">
-                          <% if software.logo.attached? %>
-                            <%= cl_image_tag software.logo.key, transformation: [{ crop: "lfill", width: 110, height: 110, quality: "auto", fetch_format: "auto"},  {radius: 10}], class:"img-size p-3" %>
-                          <% else %>
-                            <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3"%>
-                          <% end %>
-                          <div class="tag-small px-3 ">
-                            <% if software.team_tags.any? %>
-                              <% software.team_tags.each do |tag| %>
-                                <% if tag.name.present? %>
-                                  <div class="tag team-tag mb-2">
-                                    <p class="px-3 py-1 m-0"> <%= truncate(tag.name, length: 17, omission: '...') %> </p>
-                                  </div>
-                                <% end %>
-                              <% end %>
-                            <% else %>
-                              <p class="px-3 py-1 m-0 fs-6">No tags</p>
-                            <% end %>
-                          </div>
-                        </div>
-                        <div class="col-md-8">
-                          <div class="card-body m-3">
-                            <div class="d-flex">
-                              <h5 class="card-title">
-                                <%= software.name %> -
-                                <% if software.average_rating.present? %>
-                                  <span class="card-text fw-light">
-                                    <%= software.average_rating %>
-                                    <i class="fa-solid fa-star text-warning"></i>
-                                  </span>
-                                <% else %>
-                                  <span class="card-text fw-light">No ratings</span>
-                                <% end %>
-                              </h5>
-                            </div>
-                            <p class="card-text"><%= truncate(software.description, length: 60, omission: '...') %></p>
-                            <div>
-                              <% if software.category_tags.any? %>
-                                <div class="tag <%= software.category_tags.first.color %> me-2 mb-2">
-                                  <p class="px-3 py-1 m-0"> <%= software.category_tags.first.name %> </p>
-                                </div>
-                              <% else %>
-                                <p>No category</p>
-                              <% end %>
-                            </div>
-                            <p class="card-text"><strong>Price:</strong> <%= software.price_month.presence || "Free" %></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
+                <%= render 'shared/generic_soft_card', software: software %>
               <% end %>
             <% end %>
         </div>

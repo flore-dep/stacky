@@ -89,9 +89,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_07_100004) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "average_rating"
-    t.string "category"
     t.string "website"
     t.text "long_description"
+    t.string "category"
     t.string "address"
     t.float "latitude"
     t.float "longitude"

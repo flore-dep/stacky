@@ -49,6 +49,7 @@ CSV.foreach(filepath) do |row|
     category: Software::CATEGORIES.sample,
     long_description: row[2],
     website: row[3],
+    address: row[5],
     user: users.sample
   )
   file = URI.open(row[4])

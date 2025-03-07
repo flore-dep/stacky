@@ -19,9 +19,9 @@
                       <div class="row g-0">
                         <div class="col-md-4">
                           <% if software.logo.attached? %>
-                            <%= cl_image_tag software.logo.key, class: "img-fluid rounded-start p-3" %>
+                            <%= cl_image_tag software.logo.key, transformation: [{ crop: "lfill", width: 110, height: 110, quality: "auto", fetch_format: "auto"},  {radius: 10}], class:"img-size p-3" %>
                           <% else %>
-                            <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3" %>
+                            <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3"%>
                           <% end %>
                           <div class="tag-small px-3">
                             <% if software.tag.present? %>

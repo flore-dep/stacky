@@ -4,8 +4,10 @@
           <div class="app-card mb-3" style="max-width: 540px; height: 260px;">
             <div class="row g-0">
               <div class="col-4 pt-3 ps-3">
-                <% if software.logo.attached? %>
-                  <%= cl_image_tag software.logo.key, class: "img-fluid rounded-start mb-3" %>
+                <% if software.logo.attached? && past == false %>
+                  <%= cl_image_tag software.logo.key, transformation: [{ crop: "lfill", width: 110, height: 110}], class: "img-size" %>
+                <% elsif software.logo.attached? && past == true %>
+                  <%= cl_image_tag software.logo.key, transformation: [{ crop: "lfill", width: 110, height: 110}, { effect: "grayscale" }], class: "img-size"%>
                 <% else %>
                   <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start mb-3" %>
                 <% end %>

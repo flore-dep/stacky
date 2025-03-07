@@ -18,7 +18,7 @@
     <div data-past-licenses-target="activelicenses">
       <div class="row g-5 mt-3">
         <% @licenses_active.each do |license| %>
-          <%= render 'softwares/software_card', license: license, software: license.software, past: false %>
+          <%= render 'shared/generic_soft_card', license: license, software: license.software %>
         <% end %>
       </div>
     </div>
@@ -26,7 +26,7 @@
     <div class="d-none" data-past-licenses-target="pastlicenses">
       <div class="row g-5 mt-3">
         <% @licenses_past.each do |license| %>
-          <%= render 'softwares/software_card', license: license, software: license.software, past: true %>
+          <%= render 'shared/generic_soft_card', license: license, software: license.software %>
         <% end %>
         </div>
       </div>

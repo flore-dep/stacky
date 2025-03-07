@@ -12,7 +12,7 @@ export default class extends Controller {
     this.myAppsButtonTarget.classList.remove("green-button-visible");
     this.myAppsButtonTarget.classList.add("gray-button-disable");
     this.myAppsTarget.classList.add("d-none");
-    this.myAppsButtonTarget.classList.add("gray-button-disable");
+    this.dashboardButtonTarget.classList.remove("gray-button-disable");
     this.dashboardButtonTarget.classList.add("green-button-visible")
     this.dashboardTarget.classList.remove("d-none");
 

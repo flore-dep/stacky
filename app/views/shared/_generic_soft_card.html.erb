@@ -4,16 +4,16 @@
       <div class="row g-0">
         <div class="col-md-4">
           <% if software.logo.attached? %>
-            <%= cl_image_tag software.logo.key, transformation: [{ crop: "c_crop", width: 110, height: 110}, {radius: 20}], class: "img-fluid rounded-start p-3" %>
+            <%= cl_image_tag software.logo.key, transformation: [{ crop: "lfill", width: 110, height: 110, quality: "auto", fetch_format: "auto"},  {radius: 10}], class:"img-size p-3" %>
           <% else %>
-            <%= image_tag "logos/default-logo.jpg", transformation: [{ crop: "c_crop", width: 110, height: 110}], class: "img-fluid rounded-start p-3" %>
+            <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-start p-3"%>
           <% end %>
-          <div class="tag-small px-3">
-            <% if software.tag.present? %>
-              <% software.tag.each do |tag| %>
-                <% unless tag.empty? %>
-                  <div class="tag mb-2">
-                    <p class="px-3 py-1 m-0"> <%= truncate(tag, length: 17, omission: '...') %> </p>
+          <div class="tag-small px-3 ">
+            <% if software.team_tags.any? %>
+              <% software.team_tags.each do |tag| %>
+                <% if tag.name.present? %>
+                  <div class="tag team-tag mb-2">
+                    <p class="px-3 py-1 m-0"> <%= truncate(tag.name, length: 17, omission: '...') %> </p>
                   </div>
                 <% end %>
               <% end %>
@@ -39,9 +39,9 @@
             </div>
             <p class="card-text"><%= truncate(software.description, length: 60, omission: '...') %></p>
             <div>
-              <% if software.category.present? %>
-                <div class="tag bg-info me-2 mb-2">
-                  <p class="px-3 py-1 m-0"> <%= software.category %> </p>
+              <% if software.category_tags.any? %>
+                <div class="tag <%= software.category_tags.first.color %> me-2 mb-2">
+                  <p class="px-3 py-1 m-0"> <%= software.category_tags.first.name %> </p>
                 </div>
               <% else %>
                 <p>No category</p>

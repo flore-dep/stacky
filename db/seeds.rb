@@ -52,8 +52,13 @@ CSV.foreach(filepath) do |row|
     address: row[5],
     user: users.sample
   )
-  file = URI.open(row[4])
-  software.logo.attach(io: file, filename: "default_logo.jpg", content_type: "image/jpeg")
+  begin
+    file = URI.open(row[4])
+    software.logo.attach(io: file, filename: "default_logo.jpg", content_type: "image/jpeg")
+  rescue OpenURI::HTTPError, Errno::ENOENT => e
+    puts "⚠️ Erreur lors du téléchargement du logo pour #{row[0]}: #{e.message}"
+    next # Passe à la ligne suivante
+  end
   SoftwareTag.create!(software: software, category_tag: CategoryTag.all.sample)
 
   team_tags = TeamTag.all.sample(rand(1..3))

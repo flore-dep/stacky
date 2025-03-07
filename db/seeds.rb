@@ -45,8 +45,6 @@ CSV.foreach(filepath) do |row|
     name: row[0],
     price_month: (50..150).to_a.sample,
     description: row[1],
-    tag: Software::TAG_LIST.sample(rand(1..3)),
-    category: Software::CATEGORIES.sample,
     long_description: row[2],
     website: row[3],
     address: row[5],

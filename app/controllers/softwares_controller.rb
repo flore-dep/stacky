@@ -62,7 +62,7 @@ class SoftwaresController < ApplicationController
   private
 
   def software_params
-    params.require(:software).permit(:name, :price_month, :description, :logo, :category, tag: [])
+    params.require(:software).permit(:name, :price_month, :description, :logo, :category_tag, team_tag: [])
   end
 
   def set_software

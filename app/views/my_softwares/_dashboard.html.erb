@@ -1,3 +1,13 @@
-<div class="container pt-5">
-  <div class="chart" data-controller="chart"></div>
+<% user_counts = @my_softwares.each_with_object(Hash.new(0)) do |mysoft, counts|%>
+  <% counts[mysoft.name] += 1 %>
+<% end %>
+
+<% chart_data = user_counts.values.join(',') %>
+<% chart_labels = user_counts.keys.join(',') %>
+
+<div class="container mt-1">
+  <div class="chart" data-controller="chart"
+    data-chart-data="<%= chart_data %>"
+    data-chart-labels="<%= chart_labels %>">
+  </div>
 </div>

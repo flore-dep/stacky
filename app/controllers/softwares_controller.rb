@@ -36,6 +36,17 @@ class SoftwaresController < ApplicationController
     @software = Software.new(software_params)
     @software.user = current_user
     if @software.save
+      category_tag_id = software_params[:category]
+      category_tag = CategoryTag.find(software_params[:category])
+      SoftwareTag.create!(software: @software, category_tag: category_tag)
+
+      team_tag_ids = software_params[:tag]
+      team_tag_ids.each do |tag|
+        unless tag.empty?
+          team_tag = TeamTag.find(tag)
+          SoftwareTag.create!(software: @software, team_tag: team_tag)
+        end
+      end
       redirect_to software_path(@software)
     else
       Rails.logger.debug @software.errors.full_messages

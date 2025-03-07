@@ -1,5 +1,5 @@
 <% user_counts = @my_softwares.each_with_object(Hash.new(0)) do |mysoft, counts|%>
-  <% counts[mysoft.name] += 1 %>
+  <% counts[mysoft.name] += rand(1..4) %>
 <% end %>
 
 <% chart_data = user_counts.values.join(',') %>

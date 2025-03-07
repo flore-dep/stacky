@@ -1,6 +1,9 @@
 class Software < ApplicationRecord
   include PgSearch::Model
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   has_one_attached :logo
 
   belongs_to :user
@@ -42,6 +45,7 @@ class Software < ApplicationRecord
 
   validate :maximum_three_tags
   validates :name, :price_month, :category, presence: true
+
 
   pg_search_scope :global_search,
     against: [ :name, :description, :tag, :category ],

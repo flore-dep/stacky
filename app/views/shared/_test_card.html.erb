@@ -1,0 +1,69 @@
+<div class="col-md-4 p-2">
+  <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
+    <div class="app-card mb-3 shadow-sm hover-shadow-lg transition-all" style="max-width: 540px; height: 280px; border-radius: 15px; overflow: hidden;">
+      <div class="row g-0 h-100">
+        <!-- Left Column: Logo and Tags -->
+        <div class="col-md-4 d-flex flex-column justify-content-between align-items-center p-3" style="background-color: #f8f9fa;">
+          <% if software.logo.attached? %>
+            <%= cl_image_tag software.logo.key, transformation: [{ crop: "lfill", width: 110, height: 110, quality: "auto", fetch_format: "auto"},  {radius: 10}], class: "img-fluid rounded-circle shadow-sm mb-3" %>
+          <% else %>
+            <%= image_tag "logos/default-logo.jpg", class: "img-fluid rounded-circle shadow-sm mb-3" %>
+          <% end %>
+
+          <div class="tag-section text-center">
+            <% if software.team_tags.any? %>
+              <% software.team_tags.each do |tag| %>
+                <% if tag.name.present? %>
+                  <div class="tag team-tag mb-2 bg-light rounded-pill shadow-sm">
+                    <p class="px-3 py-1 m-0 small fw-bold"> <%= truncate(tag.name, length: 17, omission: '...') %> </p>
+                  </div>
+                <% end %>
+              <% end %>
+            <% else %>
+              <p class="px-3 py-1 m-0 small text-muted">No tags</p>
+            <% end %>
+          </div>
+        </div>
+
+        <!-- Right Column: Content -->
+        <div class="col-md-8 d-flex flex-column justify-content-between p-3" style="background-color: #ffffff;">
+          <div>
+            <div class="border-bottom mb-2">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="card-title mb-0 fw-bold">
+                  <%= software.name %>
+                </h5>
+                <% if software.average_rating.present? %>
+                  <span class="badge bg-info text-dark fs-6">
+                    <%= software.average_rating %>
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                <% else %>
+                  <span class="badge bg-secondary fs-6">No ratings</span>
+                <% end %>
+              </div>
+
+            </div>
+
+            <p class="card-text text-muted mb-3"><%= truncate(software.description, length: 80, omission: '...') %></p>
+          </div>
+
+          <div>
+            <% if software.category_tags.any? %>
+              <div class="tag <%= software.category_tags.first.color %> me-2 mb-2 d-inline-block rounded-pill shadow-sm">
+                <p class="px-3 py-1 m-0 small fw-bold"> <%= software.category_tags.first.name %> </p>
+              </div>
+            <% else %>
+              <p class="text-muted small mb-2">No category</p>
+            <% end %>
+
+            <p class="card-text mb-0 fw-bold">
+              <span class="text-success"><%= software.price_month.presence || "Free" %></span>
+              <span class="text-muted small">/month</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

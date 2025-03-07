@@ -1,7 +1,7 @@
 
       <div class="col-4 p-0 license-card">
         <%= link_to software_path(software), class: "text-decoration-none text-dark" do %>
-          <div class="app-card mb-3" style="max-width: 540px; height: 260px;">
+          <div class="app-card mb-3" style="max-width: 540px; height: 180px;">
             <div class="row g-0">
               <div class="col-4 pt-3 ps-3">
                 <% if software.logo.attached? && past == false %>
@@ -19,8 +19,6 @@
                       </div>
                     <% end %>
                   <% end %>
-                <% else %>
-                  <p class="px-3 py-1 m-0 fs-6">No tags</p>
                 <% end %>
               </div>
               <div class="col-8 p-3 card-body">

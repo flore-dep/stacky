@@ -13,44 +13,47 @@ class Software < ApplicationRecord
   has_many :category_tags, through: :software_tags
   has_many :team_tags, through: :software_tags
 
-  TAG_LIST = [
-    "International",
-    "Produit",
-    "Administratif & Juridique",
-    "Business",
-    "Financements",
-    "RH",
-    "Tech",
-    "Stratégie",
-    "Autre",
-    "CSM",
-    "Marketing & Communication",
-    "Collaboration & Management"
-  ]
 
-  CATEGORIES = [
-    "Communication",
-    "Project Management",
-    "Productivity",
-    "Storage",
-    "Design",
-    "Development",
-    "Cloud",
-    "Payment",
-    "CRM",
-    "Support",
-    "Marketing",
-    "Analytics"
-  ]
+  # TAG_LIST = [
+  #   "International",
+  #   "Produit",
+  #   "Administratif & Juridique",
+  #   "Business",
+  #   "Financements",
+  #   "RH",
+  #   "Tech",
+  #   "Stratégie",
+  #   "Autre",
+  #   "CSM",
+  #   "Marketing & Communication",
+  #   "Collaboration & Management"
+  # ]
+
+  # CATEGORIES = [
+  #   "Communication",
+  #   "Project Management",
+  #   "Productivity",
+  #   "Storage",
+  #   "Design",
+  #   "Development",
+  #   "Cloud",
+  #   "Payment",
+  #   "CRM",
+  #   "Support",
+  #   "Marketing",
+  #   "Analytics"
+  # ]
 
   validate :maximum_three_tags
-  validates :name, :price_month, :category, presence: true
-
+  # validate :at_least_one_category_tag
+  validates :name, :price_month, presence: true
 
   pg_search_scope :global_search,
-    against: [ :name, :description, :tag, :category ],
+    against: [:name, :description],
     associated_against: {
-      user: [ :username ]
+      user: [:username],
+      category_tags: [:name],
+      team_tags: [:name]
     },
     using: {
       tsearch: { prefix: true }
@@ -59,8 +62,14 @@ class Software < ApplicationRecord
   private
 
   def maximum_three_tags
-    if tag.size > 4
-      errors.add(:tag, "Select up to 3 tags")
+    if software_tags.size > 3
+      errors.add(:software_tags, "Select up to 3 tags")
+    end
+  end
+
+  def at_least_one_category_tag
+    if category_tags.empty?
+      errors.add(:category_tags, "Must have at least one category tag")
     end
   end
 end

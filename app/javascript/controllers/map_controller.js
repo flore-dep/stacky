@@ -23,7 +23,7 @@ export default class extends Controller {
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      new mapboxgl.Marker()
+      new mapboxgl.Marker({ "color": "#1EDD88" })
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
     })

@@ -11,6 +11,9 @@
       <div class="m-5">
         <div class="d-flex align-items-center gap-2">
           <h5 class="m-0"><%= @software.name %></h5>
+          <a href="<%= @software.website %>" target="_blank" title="Aller sur le site !">
+            <i class="fa-solid fa-link me-2"></i>
+          </a>
           <% if @software.average_rating.present? %>
             <div class="d-flex align-items-center">
               <span class="me-1"><%= @software.average_rating %></span>
@@ -24,20 +27,20 @@
           <p> <%= @software.description %> </p>
         </div>
         <div>
-          <% if @software.category.present? %>
-            <div class="tag bg-info me-2 mb-2">
-              <p class="px-3 py-1 m-0"> <%= @software.category %> </p>
+          <% if @software.category_tags.any? %>
+            <div class="<%= @software.category_tags.first.color %> me-2 mb-2">
+              <p class="px-3 py-1 m-0"> <%= @software.category_tags.first.name %> </p>
             </div>
           <% else %>
             <p>No category</p>
           <% end %>
         </div>
         <div class="d-flex align-content-center">
-          <% if @software.tag.present? %>
-            <% @software.tag.each do |tag| %>
-              <% unless tag.empty? %>
-                <div class="tag me-2">
-                  <p class="px-3 py-1 m-0"> <%= tag %> </p>
+          <% if @software.team_tags.any? %>
+            <% @software.team_tags.each do |tag| %>
+              <% if tag.name.present? %>
+                <div class="team-tag me-2">
+                  <p class="px-3 py-1 m-0"> <%= tag.name %> </p>
                 </div>
               <% end %>
             <% end %>
@@ -98,6 +101,9 @@
         <p><em><%= @software.price_month %>€ monthly</em></p>
       </div>
     </div>
+    </div>
+    <div class="ms-5 me-4">
+      <p> <%= @software.long_description %></p>
     </div>
 </div>
 

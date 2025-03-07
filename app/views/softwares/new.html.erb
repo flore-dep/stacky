@@ -9,9 +9,9 @@
           <%= f.input :logo, as: :file %>
           <%= f.input :description %>
           <%= f.input :price_month %>
-          <%= f.input :category, collection: Software::CATEGORIES %>
+          <%= f.input :category, collection: CategoryTag.all.each { |tag| tag.name} %>
           <%= f.input :tag, as: :check_boxes,
-                        collection: Software::TAG_LIST,
+                        collection: TeamTag.all.each { |tag| tag.name},
                         wrapper_html: { class: 'row' },
                         item_wrapper_class: 'col-6',
                         input_html: { class: 'form-check-input mb-2 me-2' },
